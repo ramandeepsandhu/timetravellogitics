@@ -278,7 +278,7 @@
                     </div>
 
                     <button
-                      onclick="calculateDistance()"
+                      onclick="calculateDistance(); gotoMultiStepForm()"
                       type="submit"
                       class="default-btn"
                     >
@@ -461,7 +461,7 @@ Experience swift and stress-free auto transport with Time Travelers Logistics. W
    </section>
    <!-- End Shipment Area -->
 
-    <!-- Start Services Area -->
+    <!-- Start Choose Services Area -->
     <section class="services-area services-area-two bg-color pt-100 pb-70">
       <div class="container">
         <div class="section-title">
@@ -537,7 +537,7 @@ Experience swift and stress-free auto transport with Time Travelers Logistics. W
         </div>
       </div>
     </section>
-    <!-- End Services Area -->
+    <!-- End Choose Services Area -->
 
    
 
@@ -917,6 +917,54 @@ Experience swift and stress-free auto transport with Time Travelers Logistics. W
       <i class="bx bx-chevrons-up"></i>
       <i class="bx bx-chevrons-up"></i>
     </div>
+
+    <script>
+      document
+        .getElementById("courses-form")
+        .addEventListener("submit",  function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Get the selected values from the form
+          let origin = document.getElementById("state1").value;
+          let destination = document.getElementById("state2").value;
+
+          const distanceResult =
+            document.getElementById("distance-result").innerText;
+
+          localStorage.setItem(
+            "distanceResult",
+            JSON.stringify(distanceResult)
+          );
+
+          // Save the values to localStorage
+          localStorage.setItem("origin", JSON.stringify(origin));
+
+          localStorage.setItem("destination", JSON.stringify(destination));
+
+          
+        });
+
+
+async function gotoMultiStepForm() {
+  try {
+    // Example of an asynchronous operation
+    // await someAsyncOperation();
+
+    // Optionally, log or perform other actions before redirecting
+    console.log("Redirecting to multi-step form...");
+
+    // Redirect to the multi-step form page
+    window.location.href = "multi-step-form.html";
+  } catch (error) {
+    console.error("An error occurred:", error);
+    // Optionally, handle the error, show a message to the user, etc.
+  }
+}
+
+
+    </script>
+
+
     <!-- End Go Top Area -->
     <script src="assets/js/distanceCalculate.js"></script>
     <!-- Jquery Min JS -->
@@ -950,32 +998,6 @@ Experience swift and stress-free auto transport with Time Travelers Logistics. W
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
 
-    <script>
-      document
-        .getElementById("courses-form")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent the default form submission
-
-          // Get the selected values from the form
-          let origin = document.getElementById("state1").value;
-          let destination = document.getElementById("state2").value;
-
-          const distanceResult =
-            document.getElementById("distance-result").innerText;
-
-          localStorage.setItem(
-            "distanceResult",
-            JSON.stringify(distanceResult)
-          );
-
-          // Save the values to localStorage
-          localStorage.setItem("origin", JSON.stringify(origin));
-
-          localStorage.setItem("destination", JSON.stringify(destination));
-
-          // Optionally, you can redirect or perform any other action here
-          window.location.href = "multi-step-form.html"; // Uncomment to redirect
-        });
-    </script>
+   
   </body>
 </html>

@@ -272,9 +272,9 @@
                   <select
                     name="MMERGE5"
                     id="vehicle_brands"
-                    class="form-control"
+                    class="form-control"  
                   >
-                    <option selected value="">Vehicle Make...</option>
+                    <option disabled selected value="">Vehicle Make...</option>
                     <option value="Toyota">Toyota</option>
                     <option value="Honda">Honda</option>
                     <option value="Ford">Ford</option>
@@ -298,30 +298,29 @@
                 <div class="form-group">
                   <select
                     name="MMERGE7"
-                    id="vehicle_types"
+                    id="vehicle-type"
                     class="form-control"
                   >
-                    <option selected value="">vehicle type...</option>
-                    <option value="Sedan">Sedan</option>
-                    <option value="SUV">SUV (Sport Utility Vehicle)</option>
-                    <option value="Hatchback">Hatchback</option>
-                    <option value="Coupe">Coupe</option>
-                    <option value="Convertible">Convertible</option>
+                    <option selected disabled value="">Vehicle Type</option>
                     <option value="Truck">Truck</option>
-                    <option value="Van">Van</option>
-                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="Tahoe">Tahoe</option>
+                    <option value="Suburban">Suburban</option>
+                    <option value="Expedition">Expedition</option>
+                    <option value="Escalade">Coupe</option>
+                    <option value="Escalade">Convertible</option>
+                                        
                   </select>
                 </div>
               </div>
               <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
                   <select
-                    name=""
-                    id="transport_types"
+                    name="MMERGE22"
+                    id="transport-type"
                     class="form-control"
                     required
                   >
-                    <option  selected value="" >Transport type...</option>
+                    <option disabled  selected value="" >Transport type...</option>
                     <option value="open">Open</option>
                     <option value="enclosed">Enclosed</option>
                     
@@ -416,7 +415,7 @@
                 <div class="form-group col-md-6">
                   <input
                     type="date"
-                    id="name"
+                    id="pickup-date"
                     class="form-control"
                     name="MMERGE18"
                     placeholder="Your Name"
@@ -511,11 +510,11 @@
                 </div>
                 <div class="form-group col-md-6">
                   <input
-                    type="text"
-                    id="name"
+                    type="date"
+                    id="delivery-date"
                     class="form-control"
                     name="MMERGE19"
-                    placeholder="Backup Phone"
+                    placeholder=""
                   />
                 </div>
 
@@ -588,7 +587,7 @@
             <button
               class="default-btn btn-two"
               type="button"
-              onclick="nextStep(3)"
+              onclick="setDateinLocalStorage(); nextStep(3)"
             >
               Next
             </button>
@@ -953,6 +952,12 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+
+     
+
+
+
+
         let origin = JSON.parse(localStorage.getItem("origin"));
         let destination = JSON.parse(localStorage.getItem("destination"));
         let distanceResult = JSON.parse(localStorage.getItem("distanceResult"));
@@ -973,12 +978,9 @@
         }
       });
 
-      // function handleCheckout() {
-        
-      //   window.location.href = "Checkout.html";
-        
-      // }
+     
 
+      handleaddData();
       function handleCheckout(event) {
     // Prevent the default form submission
     event.preventDefault();
@@ -1016,6 +1018,15 @@
 
 
       function updateLocalStorage() {
+        let transportType = document.getElementById('transport-type').value
+        let vehicleType = document.getElementById('vehicle-type').value
+       
+        localStorage.setItem("transportType", JSON.stringify(transportType));
+        localStorage.setItem("vehicleType", JSON.stringify(vehicleType));
+
+
+
+
         let origin = document.getElementById("state1").value;
         let destination = document.getElementById("state2").value;
         let distanceResult =
@@ -1026,6 +1037,13 @@
         localStorage.setItem("distanceResult", JSON.stringify(distanceResult));
 
         localStorage.removeItem("paymentAmount");
+      }
+
+      function setDateinLocalStorage(){
+          let pickupdate = document.getElementById('pickup-date').value
+          let deliverydate = document.getElementById('delivery-date').value
+          localStorage.setItem("pickupdate", JSON.stringify(pickupdate));
+          localStorage.setItem("deliverydate", JSON.stringify(deliverydate));
       }
 
       function nextStep(step) {

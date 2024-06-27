@@ -57,7 +57,8 @@ $heading-font-family: "Roboto", sans-serif;
 $body-color: #555555;
 // $main-color: #0383ff;
 // $main-color: #1dbf73;
-$main-color: #24FF00;
+// $main-color: #24FF00;
+$main-color: #89F336;
 $heading-color: #000024;
 $white-color: #ffffff;
 $graywhite-color: #F1EFE7;
@@ -783,10 +784,9 @@ Nav Area Style
           top: 0;
         }
         a{
-          background-color: $galss-bg;
-          a:hover{
-            background-color: $black-color !important;
-          }
+          background-color: $black-color;
+          color: $white-color;
+          
         }
         
       }
@@ -1008,7 +1008,7 @@ Banner Area Style
   }
 }
 .quote-price-content {
-  background-color: $galss-bg;
+  background-color: $main-color;
   padding: 30px;
   margin-top: 150px;
   h3 {
@@ -1209,7 +1209,9 @@ Services Area Style
   box-shadow: $box-shadow;
   margin-bottom: 30px;
   transition: $transition;
-
+p{
+  min-height: 150px;
+}
   i {
     font-size: 50px;
     background-color: rgba(0, 123, 255, 0.25);
@@ -1242,6 +1244,7 @@ Services Area Style
   }
 }
 
+
 /*
 Choose Area Style
 ======================================================*/
@@ -1270,7 +1273,7 @@ Choose Area Style
     margin-bottom: 25px;
   }
   p {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
   .single-choose-us-box {
     background-color: $main-color;
@@ -1890,7 +1893,7 @@ Blog Area Style
 Footer Top Area Style
 ======================================================*/
 .footer-area {
-  background-color: $black-color;
+  background-color: $main-color;
 }
 .single-footer-widget {
   margin-bottom: 30px;
@@ -1900,7 +1903,7 @@ Footer Top Area Style
   }
   p {
     margin-bottom: 20px;
-    color: #c3c3c3;
+    color: $black-color;
   }
   .social-icon {
     line-height: 1;
@@ -1916,7 +1919,7 @@ Footer Top Area Style
           height: 30px;
           line-height: 28px;
           border: 1px solid $main-color;
-          color: $white-color;
+          color: $black-color;
           text-align: center;
           transition: $transition;
         }
@@ -1930,7 +1933,7 @@ Footer Top Area Style
     }
   }
   h3 {
-    color: $white-color;
+    color: $black-color;
     font-size: 24px;
     margin-bottom: 30px;
     padding-bottom: 15px;
@@ -1954,22 +1957,27 @@ Footer Top Area Style
       position: relative;
       i {
         position: absolute;
-        color: $main-color;
+        color: $black-color;
         left: 0;
         top: 5px;
         font-size: 25px;
+        
       }
     }
     li {
       padding-left: 40px;
       position: relative;
       margin-bottom: 16px;
-      color: #c3c3c3;
+      color: $black-color;
+      &:hover{
+        color: $white-color;
+        cursor: pointer;
+      }
       a {
         display: block;
-        color: #c3c3c3;
+        color: $black-color;
         &:hover {
-          color: $main-color;
+          color: $white-color;
         }
       }
       &:last-child {
@@ -1977,7 +1985,7 @@ Footer Top Area Style
       }
       i {
         position: absolute;
-        color: $main-color;
+        color: $black-color;
         left: 0;
         top: 5px;
         font-size: 25px;
@@ -1999,11 +2007,11 @@ Footer Top Area Style
         left: 0;
         width: 11px;
         height: 11px;
-        background-color: $main-color;
+        background-color: $black-color;
         transition: $transition;
       }
       a {
-        color: #c3c3c3;
+        color: $black-color;
       }
       &:last-child {
         margin-bottom: 0;
@@ -2013,7 +2021,7 @@ Footer Top Area Style
           border-radius: 50%;
         }
         a {
-          color: $main-color;
+          color: $white-color;
         }
       }
     }
@@ -4857,10 +4865,11 @@ Main Contact Area Style
   text-align: center;
   box-shadow: $box-shadow;
   background-color: $white-color;
-  margin-bottom: 30px;
-  padding: 30px;
+  margin-bottom: 30px 10px;
+  padding: 30px 0px;
   transition: all 0.5s;
   border-radius: $border-radius;
+  min-height: 210px;
   i {
     display: block;
     color: $main-color;

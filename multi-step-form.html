@@ -155,7 +155,7 @@
 
                   <li class="nav-item">
                     <a href="services-style-three.html" class="nav-link">
-                      Services Area
+                      Ship Now
                     </a>
                   </li>
                   <li class="nav-item">
@@ -217,16 +217,16 @@
         <div class="section-title"></div>
 
         <form
-        id="multiStepForm"
-        class="multi-step-form"
-        action="https://timetravelerslogistics.us14.list-manage.com/subscribe/post?u=f43ae011857ef747117b7d9cb&amp;id=a73b73b5b8&amp;f_id=00f097e0f0"
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
-        class="validate"
-        target="hidden_iframe" 
-        onsubmit="handleCheckout(event)"
-      >
+          id="multiStepForm"
+          class="multi-step-form"
+          action="https://timetravelerslogistics.us14.list-manage.com/subscribe/post?u=f43ae011857ef747117b7d9cb&amp;id=a73b73b5b8&amp;f_id=00f097e0f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="validate"
+          target="hidden_iframe"
+          onsubmit="handleCheckout(event)"
+        >
           <!-- Step 1: Personal Information -->
           <div class="step" id="step1">
             <h4>Please fill in the required information</h4>
@@ -272,7 +272,7 @@
                   <select
                     name="MMERGE5"
                     id="vehicle_brands"
-                    class="form-control"  
+                    class="form-control"
                   >
                     <option disabled selected value="">Vehicle Make...</option>
                     <option value="Toyota">Toyota</option>
@@ -296,11 +296,7 @@
 
               <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
-                  <select
-                    name="MMERGE7"
-                    id="vehicle-type"
-                    class="form-control"
-                  >
+                  <select name="MMERGE7" id="vehicle-type" class="form-control">
                     <option selected disabled value="">Vehicle Type</option>
                     <option value="Truck">Truck</option>
                     <option value="Tahoe">Tahoe</option>
@@ -308,7 +304,6 @@
                     <option value="Expedition">Expedition</option>
                     <option value="Escalade">Coupe</option>
                     <option value="Escalade">Convertible</option>
-                                        
                   </select>
                 </div>
               </div>
@@ -320,10 +315,11 @@
                     class="form-control"
                     required
                   >
-                    <option disabled  selected value="" >Transport type...</option>
+                    <option disabled selected value="">
+                      Transport type...
+                    </option>
                     <option value="open">Open</option>
                     <option value="enclosed">Enclosed</option>
-                    
                   </select>
                 </div>
               </div>
@@ -750,20 +746,23 @@
                   Calculate Amount
                 </button>
                 <button
-                class="default-btn btn-two"
-                type="submit"
-                name="subscribe"
-                id="mc-embedded-subscribe"
-              >
-                Submit
-              </button>
+                  class="default-btn btn-two"
+                  type="submit"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>
         </form>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
-
+        <iframe
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display: none"
+        ></iframe>
       </div>
     </section>
 
@@ -776,7 +775,7 @@
               <a href="index.html" class="logo">
                 <img
                   style="width: 200px; height: 200px"
-                  src="assets/img/logowhite.svg"
+                  src="assets/img/logo.svg"
                   alt="Image"
                 />
               </a>
@@ -952,16 +951,9 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-
-     
-
-
-
-
         let origin = JSON.parse(localStorage.getItem("origin"));
         let destination = JSON.parse(localStorage.getItem("destination"));
         let distanceResult = JSON.parse(localStorage.getItem("distanceResult"));
-
 
         // Set initial values to form fields if they exist in localStorage
         if (origin) {
@@ -978,54 +970,43 @@
         }
       });
 
-     
-
       handleaddData();
       function handleCheckout(event) {
-    // Prevent the default form submission
-    event.preventDefault();
+        // Prevent the default form submission
+        event.preventDefault();
 
-    // Create a hidden iframe if it doesn't already exist
-    let iframe = document.getElementById('hidden_iframe');
-    if (!iframe) {
-        iframe = document.createElement('iframe');
-        iframe.name = 'hidden_iframe';
-        iframe.id = 'hidden_iframe';
-        iframe.style.display = 'none';
-        document.body.appendChild(iframe);
-    }
+        // Create a hidden iframe if it doesn't already exist
+        let iframe = document.getElementById("hidden_iframe");
+        if (!iframe) {
+          iframe = document.createElement("iframe");
+          iframe.name = "hidden_iframe";
+          iframe.id = "hidden_iframe";
+          iframe.style.display = "none";
+          document.body.appendChild(iframe);
+        }
 
-    // Set the form's target to the hidden iframe
-    const form = document.getElementById('multiStepForm');
-    form.target = 'hidden_iframe';
+        // Set the form's target to the hidden iframe
+        const form = document.getElementById("multiStepForm");
+        form.target = "hidden_iframe";
 
-    // Listen for the load event on the iframe to detect when the form submission is complete
-    iframe.onload = function() {
-        // Redirect to Checkout.html
-        window.location.href = "Checkout.html";
-    };
+        // Listen for the load event on the iframe to detect when the form submission is complete
+        iframe.onload = function () {
+          // Redirect to Checkout.html
+          window.location.href = "Checkout.html";
+        };
 
-    // Submit the form programmatically
-    form.submit();
-}
-
-
+        // Submit the form programmatically
+        form.submit();
+      }
 
       // Function to calculate payment amount
-    
-
-
-
 
       function updateLocalStorage() {
-        let transportType = document.getElementById('transport-type').value
-        let vehicleType = document.getElementById('vehicle-type').value
-       
+        let transportType = document.getElementById("transport-type").value;
+        let vehicleType = document.getElementById("vehicle-type").value;
+
         localStorage.setItem("transportType", JSON.stringify(transportType));
         localStorage.setItem("vehicleType", JSON.stringify(vehicleType));
-
-
-
 
         let origin = document.getElementById("state1").value;
         let destination = document.getElementById("state2").value;
@@ -1039,11 +1020,11 @@
         localStorage.removeItem("paymentAmount");
       }
 
-      function setDateinLocalStorage(){
-          let pickupdate = document.getElementById('pickup-date').value
-          let deliverydate = document.getElementById('delivery-date').value
-          localStorage.setItem("pickupdate", JSON.stringify(pickupdate));
-          localStorage.setItem("deliverydate", JSON.stringify(deliverydate));
+      function setDateinLocalStorage() {
+        let pickupdate = document.getElementById("pickup-date").value;
+        let deliverydate = document.getElementById("delivery-date").value;
+        localStorage.setItem("pickupdate", JSON.stringify(pickupdate));
+        localStorage.setItem("deliverydate", JSON.stringify(deliverydate));
       }
 
       function nextStep(step) {

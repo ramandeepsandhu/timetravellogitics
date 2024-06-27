@@ -20,7 +20,7 @@ This files table contents are outlined below>>>>>
 ** - Mobile Nav Area Style
 ** - Banner Area Style
 ** - About Area Style
-** - Services Area Style
+** - Ship Now Style
 ** - Choose Area Style
 ** - Counter Area Style
 ** - Pricing Area Style
@@ -58,18 +58,18 @@ $body-color: #555555;
 // $main-color: #0383ff;
 // $main-color: #1dbf73;
 // $main-color: #24FF00;
-$main-color: #89F336;
+$main-color: #89f336;
 $heading-color: #000024;
 $white-color: #ffffff;
-$graywhite-color: #F1EFE7;
+$graywhite-color: #f1efe7;
 // $white-color: #F1EFE7;
 // $black-color: #000000;
-$black-color: #1E1E1E;
+$black-color: #1e1e1e;
 $font-size: 16px;
 $transition: all ease 0.5s;
 $border-radius: 4px;
 $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
-$galss-bg: #24FF00;
+$galss-bg: #24ff00;
 
 body {
   font-size: $font-size;
@@ -80,7 +80,7 @@ a {
   transition: $transition;
   text-decoration: none;
   color: $main-color;
-  
+
   &:hover {
     text-decoration: none;
     color: $black-color;
@@ -575,13 +575,13 @@ Header Area Style
 /*
 Nav Area Style
 ======================================================*/
-.navbar-area.is-sticky{
+.navbar-area.is-sticky {
   background-color: $main-color !important;
 }
 .navbar-area {
   box-shadow: $box-shadow;
   background-color: $main-color;
-  
+
   .desktop-nav {
     .navbar {
       position: inherit;
@@ -783,12 +783,10 @@ Nav Area Style
           position: relative;
           top: 0;
         }
-        a{
+        a {
           background-color: $black-color;
           color: $white-color;
-          
         }
-        
       }
     }
   }
@@ -1176,7 +1174,7 @@ About Area Style
 }
 
 /*
-Services Area Style
+Ship Now Style
 ======================================================*/
 .services-area-two {
   .single-services-box {
@@ -1209,9 +1207,9 @@ Services Area Style
   box-shadow: $box-shadow;
   margin-bottom: 30px;
   transition: $transition;
-p{
-  min-height: 150px;
-}
+  p {
+    min-height: 150px;
+  }
   i {
     font-size: 50px;
     background-color: rgba(0, 123, 255, 0.25);
@@ -1228,9 +1226,8 @@ p{
   h3 {
     font-size: 22px;
     margin-bottom: 15px;
-    
   }
-  a{
+  a {
     color: $black-color;
     background-color: $main-color;
     padding: 10px 16px;
@@ -1243,7 +1240,6 @@ p{
     }
   }
 }
-
 
 /*
 Choose Area Style
@@ -1961,7 +1957,6 @@ Footer Top Area Style
         left: 0;
         top: 5px;
         font-size: 25px;
-        
       }
     }
     li {
@@ -1969,7 +1964,7 @@ Footer Top Area Style
       position: relative;
       margin-bottom: 16px;
       color: $black-color;
-      &:hover{
+      &:hover {
         color: $white-color;
         cursor: pointer;
       }
@@ -2288,7 +2283,7 @@ Track Area Style
         font-size: 15px;
         margin-bottom: 20px;
       }
-      .nice-select{
+      .nice-select {
         width: 100%;
         border-radius: 0;
         height: 50px;
@@ -2408,7 +2403,7 @@ Page Title Area Style
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -5521,13 +5516,13 @@ Tabs Area Style*/
 #multistepformContainer {
   background-color: #f5f5f5 !important;
 }
-#distance-result{
-  color:$main-color;
+#distance-result {
+  color: $main-color;
 }
-.distance-result-container{
+.distance-result-container {
   margin-top: 25px;
 }
-.courses-form input{
+.courses-form input {
   height: 50px;
   width: 100%;
   line-height: 48px;
@@ -5539,13 +5534,12 @@ Tabs Area Style*/
   border: 0;
   outline: 0;
 }
-.courses-title{
+.courses-title {
   padding: 20px 0;
   background-color: $graywhite-color;
   margin-bottom: 30px;
-  h3{
+  h3 {
     color: $black-color !important;
     text-align: center;
-    
   }
 }

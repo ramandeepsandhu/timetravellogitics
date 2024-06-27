@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .payment-form {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .payment-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: calc(100% - 22px);
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .form-group .error {
+      color: red;
+      font-size: 12px;
+      display: none;
+    }
+    .form-group.inline {
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-group.inline input {
+      width: calc(50% - 10px);
+    }
+    .payment-icons {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .payment-icons img {
+      width: 40px;
+      margin-left: 10px;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-form">
+    <h2>Pay with card</h2>
+    <div class="payment-icons">
+      <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" />
+      <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="MasterCard" />
+      <img src="https://img.icons8.com/color/48/000000/amex.png" alt="Amex" />
+      <img src="https://img.icons8.com/color/48/000000/discover.png" alt="Discover" />
+      
+    </div>
+    <div class="form-group">
+      <label for="amount">Payment Amount</label>
+      <input type="text" id="amount" placeholder="Amount" required />
+      <div class="error">Please fill out a payment amount.</div>
+    </div>
+    <div class="form-group">
+      <label for="cardholder-name">Cardholder Name</label>
+      <input type="text" id="cardholder-name" placeholder="Cardholder Name" required />
+      <div class="error">Please fill out a cardholder name.</div>
+    </div>
+    <div class="form-group">
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="Card Number" required />
+      <div class="error">Please fill out a card number.</div>
+      <div class="error">Card number is not valid.</div>
+    </div>
+    <div class="form-group inline">
+      <div>
+        <label for="expiration-date">Expiration Month</label>
+        <input type="text" id="expiration-date" placeholder="MM" required />
+        <div class="error">Please fill out an expiration month.</div>
+      </div>
+      <div>
+        <label for="expiration-year">Expiration Year</label>
+        <input type="text" id="expiration-year" placeholder="YY" required />
+        <div class="error">Please fill out an expiration year.</div>
+      </div>
+      <div>
+        <label for="cvv">CVV (3 digits)</label>
+        <input type="text" id="cvv" placeholder="CVV" required />
+        <div class="error">Please fill out a CVV.</div>
+      </div>
+    </div>
+    <button class="btn-submit" onclick="validateForm()">Submit</button>
+    <div class="mt-4" id="message"></div>
+  </div>
+
+  <script>
+ const cardholderName = document.getElementById("cardholder-name");
+      const cardNumber = document.getElementById("card-number");
+      const expirationDate = document.getElementById("expiration-date");
+      const expirationYear = document.getElementById("expiration-year");
+      const cvv = document.getElementById("cvv");
+      const amount = document.getElementById("amount");
+      const messageElement = document.getElementById("message");
+
+    const paymentAmount = JSON.parse(localStorage.getItem('paymentAmount'))
+    amount.value= paymentAmount
+    async function validateForm() {
+
+
+  // Basic card number validation
+  if (!isValidCardNumber(cardNumber.value)) {
+    showError(cardNumber, "Card number is not valid.");
+    return;
+  }
+
+  const paymentData = {
+    amount: parseFloat(amount.value),
+    currency: "USD",
+    card: {
+      expMonth: expirationDate.value,
+      expYear: expirationYear.value,
+      address: {
+        postalCode: "94103",
+      },
+      name: cardholderName.value,
+      cvc: cvv.value,
+      number: cardNumber.value,
+    },
+  };
+
+  try {
+    const response = await fetch(
+      "https://sandbox.api.intuit.com/quickbooks/v4/payments/charges",
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiZGlyIn0.._atNLm8Qpwx259F1hAxD2Q.9YGfNvrJn0REp0Bue_RN6IjyyDlQMomtYw0adjD60kniGIW2OZSzcglnvAK6BkH0eWsSET8fZC54mJHX1Yda8Hz1p6tZfLCOWaojKu4visjjf_AuVLelIBpEe6nJ_1hqcs9dSomYbrPiKs01bUIeYmjhPH1ek0LF1HbMzqNYaOQQTLA9fbX8ncuKdVVIe6ry624n2bgAi90XumcE3ZNlmKvOFLwq8Bu0hkO0y3ECrikbTs3Wi3YmoETD-wDw5V_7cyfUjYFSkNyowYupiHg7U7ghjtzRdKzdY6dVqFMBDbj-0DOq_-omzWnNcIvA3_dYBd_64i4Bo5aKDcdYtVfwEz9s1LIwtSTvVMWGzQ_wITjC9ggvSF2JbddkEp7SWiO4Vws7GLP21xurtLZ5kJwQXopqv0PkQBwNJw8WTIeMiKG8BkI0u1NAHi5eCFaBRT1nv8hTuodUPlPFBDkgGT8pNvybeAqIu6ncxkrpkxD1ipRWOZMAYBEP96J2_fBkDiJEuwiTr1-lWzvYC7MCm-ctE9Z5GStc8VyUCd6p-diSP4JMwrDEJ3Tlvp-yuJNObwHiLKE3jFvgzzfoffunkNiA7haobnA5d38zswYud14HvDn94yWWbUmCBKAejOwthvEXu1OSJKK5uAyJsbKtuSpKcDtnrfxO0eky3IZqyc34hhwH0rf6YpTMkclrrsSysBckVllGKCnLerdDXpf5t_4Z25t_hiENu0_zzfywC7gZzuagLoAE41m7o27K2k1DpZBB.ggVbDZxkhfDF7XD9G9jhdg", // Replace with your actual access token
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(paymentData),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Authorizatoin Failed: ${response.status}`);
+    }
+
+    const result = await response.json();
+    messageElement.innerText = "Payment successful: " + JSON.stringify(result);
+    messageElement.style.color = "green";
+
+    // Store paymentData in localStorage
+    localStorage.setItem('PaymentInfo', JSON.stringify(paymentData));
+    console.log("Payment information stored in localStorage:", paymentData);
+  } catch (error) {
+    console.error("Error:", error);
+    messageElement.innerText = "Payment failed: " + error.message;
+    messageElement.style.color = "red";
+  }
+}
+
+function isValidCardNumber(cardNumber) {
+  // Check for a numeric card number
+  const cardNumberRegex = /^[0-9]+$/;
+  return cardNumberRegex.test(cardNumber);
+}
+
+function showError(input, message) {
+  const errorDiv = input.nextElementSibling;
+  errorDiv.textContent = message;
+  errorDiv.style.display = "block";
+}
+
+function hideError(input) {
+  const errorDiv = input.nextElementSibling;
+  errorDiv.style.display = "none";
+}
+
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+/*================================================
+Default CSS
+=================================================*/
+$main-color: #0383ff;
+$black-color: #000000;
+$body-color:#ffffff;
+$optional-color: #ffffff;
+
+// Switch css
+.switch-box {
+    position: fixed;
+    z-index: 1;
+    left: 3%;
+    bottom: 63px;
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #4d4949;
+        transition: 0.4s;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 30px;
+            width: 30px;
+            left: 2.5px;
+            bottom: 4px;
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            transition: 0.4s;
+            box-shadow: 0 0px 15px #2020203d;
+            background: url(../../assets/img/night.png);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    input:checked + .slider {
+        background-color: #cbc1c1;
+    }
+    input:focus + .slider {
+        background-color: #4d4949;
+    }
+    input:checked + .slider:before {
+        transform: translateX(24px);
+        background: url(../img/sunny.png);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .slider {
+        &.round {
+            border-radius: 50px;
+
+            &:before {
+                border-radius: 50%;
+            } 
+        }
+    }
+}
+
+// Dark Style CSS
+.theme-dark {
+    body {
+        background-color: #000000;
+        color: #f1f1f1;
+    }
+    p {
+        color: #f1f1f1;
+        
+        a {
+            color: #f1f1f1 !important;
+
+            &:hover {
+                color: $main-color !important;
+            }
+        }
+    }
+    a {
+        color: $body-color;
+    }
+    
+    .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+        color: $body-color !important;
+
+        a {
+            color: $body-color !important;
+
+            &:hover {
+                color: $main-color !important;
+            }
+        }
+    }
+
+    .bg-color {
+        background-color: #0e0e0e;
+    }
+
+    //Preloader
+    .preloader {
+        background-color: #0e0e0e;
+    }
+    //Navbar
+    .navbar-area {
+        background-color: #161616;
+        &.is-sticky {
+            background-color: #161616 !important;
+        }
+        
+        .desktop-nav {
+            background-color: #161616;
+            .navbar {
+                .navbar-brand {
+                    .white-logo {
+                        display: block;
+                    }
+                    .main-logo {
+                        display: none;
+                    }
+                }
+                .navbar-nav {
+                    .nav-item {
+                        a {
+                            color: $body-color;
+
+                            &:hover, &:focus, &.active {
+                                color: $main-color !important;
+                            }
+                        }
+                        &:hover, &:focus, &.active {
+                            a {
+                                color: $main-color !important;
+                            }
+                        }
+                        .dropdown-menu {
+                            background: #0e0e0e;
+                            
+                            li {
+                                a {
+                                    color: $body-color !important;
+                                    border-bottom: 1px dashed #000000;
+                                    
+                                    &:hover, &:focus, &.active {
+                                        color: $main-color !important;
+                                    }
+                                }
+                                .dropdown-menu {
+                                    li {
+                                        a {
+                                            color: $body-color !important;
+                                            border-bottom: 1px dashed #000000;
+
+                                            &:hover, &:focus, &.active {
+                                                color: $main-color !important;
+                                            }
+                                        }
+                                        .dropdown-menu {
+                                            li {
+                                                a {
+                                                    color: $body-color;
+
+                                                    &:hover, &:focus, &.active {
+                                                        color: $main-color ;
+                                                    }
+                                                }
+                                                .dropdown-menu {
+                                                    li {
+                                                        a {
+                                                            color: $body-color;
+                                                            
+                                                            &:hover, &:focus, &.active {
+                                                                color: $main-color;
+                                                            }
+                                                        }
+                                                        .dropdown-menu {
+                                                            li {
+                                                                a {
+                                                                    color: $body-color;
+                                                                    
+                                                                    &:hover, &:focus, &.active {
+                                                                        color: $main-color;
+                                                                    }
+                                                                }
+                                                                .dropdown-menu {
+                                                                    li {
+                                                                        a {
+                                                                            color: $body-color;
+                                                                            
+                                                                            &:hover, &:focus, &.active {
+                                                                                color: $main-color;
+                                                                            }
+                                                                        }
+                                                                        .dropdown-menu {
+                                                                            li {
+                                                                                a {
+                                                                                    color: $body-color;
+
+                                                                                    &:hover, &:focus, &.active {
+                                                                                        color: $main-color;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        &.active {
+                                                                            a {
+                                                                                color: $main-color;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                &.active {
+                                                                    a {
+                                                                        color: $main-color;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        &.active {
+                                                            a {
+                                                                color: $main-color;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                &.active {
+                                                    a {
+                                                        color: $main-color;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        &.active {
+                                            a {
+                                                color: $main-color;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    a {
+                                        color: $main-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .others-option {
+                    .option-item {
+                        .support {
+                            p {
+                                color: $body-color;
+                            }
+                            a {
+                                color: $body-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .others-option-for-responsive {
+        .dot-menu {
+            .inner {
+                .circle {
+                    background-color: $body-color;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 991px) {
+        .mobile-nav {
+            .mobile-menu {
+                &.mean-container {
+                    a {
+                        &.meanmenu-reveal {
+                            span {
+                                background-color: $body-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    //Banner
+    .banner-content {
+        h1 {
+            color: $black-color !important;
+        }
+        p {
+            color: $black-color;
+        }
+    }
+    .banner-area {
+        &.banner-area-two {
+            .banner-content {
+                h1 {
+                    color: $body-color !important;
+                }
+            }
+        }
+    }
+
+    //Page Title
+    .page-title-area {
+        &::before {
+            background-color: #0a0909;
+        }
+        .page-title-content {
+            ul {
+                li {
+                    a {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+    }
+
+    //Feautures
+    .single-feature-box {
+        background-color: #0e0e0e;
+    }
+
+    //Services
+    .single-services-box {
+        background-color: #1a1919;
+    }
+    .sidebar-widget {
+        background-color: #0e0e0e;
+        &.recent-post {
+            ul {
+                li {
+                    a {
+                        color: $body-color;
+                        &:hover {
+                            color: $body-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Choose Us
+    .choose-us-content {
+        .single-choose-us-box {
+            background-color: #1c1b1b;
+        }
+    }
+
+    //Counter
+    .single-counter {
+        background-color: $black-color;
+    }
+    
+    //Quote
+    .tab {
+        &.quote-list-tab {
+            .tabs {
+                background-color: #2c2b2b;
+                li {
+                    a {
+                        color: $body-color;
+                    }
+                    &.current {
+                        a {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+            .tabs_item {
+                background-color: #0e0e0e;
+                .form-group {
+                    .form-control {
+                        background-color: $black-color;
+                        color: $body-color;
+                        border-color: #4b4a4a;
+                        &::placeholder {
+                            color: $body-color;
+                        }
+                    }
+                }
+                .nice-select {
+                    background-color: $black-color;
+                    color: $body-color;
+                    .current {
+                        color: $body-color;
+                    }
+                    .list {
+                        background-color: $black-color;
+                    }
+                }
+            }
+        }
+    }
+    .quote-price-content {
+        background-color: rgba(14, 14, 14, 0.9);
+    }
+
+    //Shop
+    .single-product {
+        background-color: #0e0e0e;
+    }
+    .showing-result {
+        background-color: #222222;
+    }
+
+    //Cart
+    .cart-area {
+        .cart-controller {
+            background-color: #100f0f;
+        }
+        .cart-table {
+            table {
+                thead {
+                    tr {
+                        th {
+                            border-bottom: 1px solid #626161;
+                            color: $body-color;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            border-bottom: 1px solid #262626;
+                            color: $body-color;
+                            a {
+                                color: $body-color;
+                                &:hover {
+                                    color: $main-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .coupon-cart {
+            .form-group {
+                .form-control {
+                    background-color: $black-color;
+                    color: $body-color;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+        }
+        
+    }
+    .cart-totals {
+        background-color: #0e0e0e;
+        ul {
+            li {
+                color: $body-color;
+                span {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    //CheckOut
+    .checkout-area {
+        .billing-details {
+            background-color: #0e0e0e;
+            .form-group {
+                label {
+                    color: $body-color;
+                }
+                .form-control {
+                    background-color: $black-color;
+                    color: $body-color;
+                    &::placeholder {
+                        color: $body-color;
+                    }
+                }
+            }
+            .form-check {
+                .form-check-label {
+                    color: $body-color;
+                }
+            }
+        }
+        .faq-accordion {
+            background-color: #0e0e0e;
+            .accordion {
+                .accordion-title {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    //Product Details
+    .product-details-area {
+        .products-details-tab {
+            .tabs {
+                li {
+                    a {
+                        color: $body-color;
+                    }
+                    &.current {
+                        a {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+            .tab_content {
+                .tabs_item {
+                    .products-details-tab-content {
+                        .additional-information {
+                            li {
+                                color: $body-color;
+                                span {
+                                    color: $body-color;
+                                }
+                            }
+                        }
+                        .product-review-form {
+                            .review-form {
+                                form {
+                                    .form-group {
+                                        label {
+                                            color: $body-color;
+                                        }
+                                        .form-control {
+                                            color: $body-color;
+                                            background-color: #0e0e0e;
+                                            border-color: #3c3c3c;
+                                        }
+                                    }
+                                }
+                            }
+                            .review-comments {
+                                .review-item {
+                                    .review-report-link {
+                                        color: $body-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Pricing
+    .single-pricing-box {
+        background-color: #0e0e0e;
+    }
+
+    //Testimonial
+    .single-testimonials {
+        background-color: #0e0e0e;
+    }
+
+    //Global Location
+    .global-location-area {
+        .single-location-box {
+            background-color: #0e0e0e;
+        }
+    }
+
+    //Faq
+    .faq-area {
+        .faq-accordion {
+            .accordion {
+                .accordion-title {
+                    color: $body-color;
+                    background-color: #0e0e0e;
+                }
+                .accordion-content {
+                    background-color: #151515;
+                }
+            }
+        }
+    }
+    .main-contact-area {
+        #contactForm {
+            background-color: #0e0e0e;
+        }
+        .form-group {
+            .form-control {
+                color: $body-color;
+                background-color: $black-color;
+                border-color: #595858;
+                &::placeholder {
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    //Comming Soon
+    .coming-soon-area {
+        .coming-soon-content {
+            background-color: #0e0e0e;
+            form {
+                .form-group {
+                    .input-newsletter {
+                        color: $body-color;
+                        &::placeholder {
+                            color: $body-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //Blog
+    .single-blog-post {
+        background-color: #0e0e0e;
+    }
+
+    //Contact
+    .single-contact-info {
+        background-color: $black-color;
+        &:hover {
+            background-color: $main-color;
+        }
+    }
+
+    //Footer
+    .footer-area {
+        background-color: #1b1a1a;
+    }
+    .copy-right-area {
+        background-color: #1b1a1a;
+    }
+
+    //My Account
+    .user-area-style {
+        .contact-form-action {
+            background-color: #0e0e0e;
+            form {
+                .form-group {
+                    .form-control {
+                        color: $body-color;
+                        background-color: $black-color;
+                        border-color: #525151;
+                        &::placeholder {
+                            color: $body-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+}

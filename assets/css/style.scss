@@ -5317,9 +5317,18 @@ Nice select Area Style*/
 .nice-select .list {
   width: 100%;
   border-radius: 0;
+  max-height: 300px;
+  overflow-y: scroll;
+ 
+
 }
 .nice-select {
+  .text-center{
+    text-align: left;
+  }
   .option {
+    text-align: center;
+    
     &:hover {
       background-color: $main-color;
       color: $white-color;
@@ -5542,4 +5551,7 @@ Tabs Area Style*/
     color: $black-color !important;
     text-align: center;
   }
+}
+.option-select{
+  text-align: center !important;
 }

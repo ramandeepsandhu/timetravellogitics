@@ -5019,8 +5019,16 @@ Nice select Area Style*/
 .nice-select .list {
   width: 100%;
   border-radius: 0;
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
+.nice-select .text-center {
+  text-align: left;
+}
+.nice-select .option {
+  text-align: center;
+}
 .nice-select .option:hover {
   background-color: #89f336;
   color: #ffffff;
@@ -5245,4 +5253,8 @@ Tabs Area Style*/
 .courses-title h3 {
   color: #1e1e1e !important;
   text-align: center;
+}
+
+.option-select {
+  text-align: center !important;
 }/*# sourceMappingURL=style.css.map */

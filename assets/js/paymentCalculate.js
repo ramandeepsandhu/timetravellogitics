@@ -33,7 +33,7 @@ function calculatePayment() {
     
 
       // Input validation
-      if (isNaN(quantity) || isNaN(distance) || !vehicleType || !transportType) {
+      if (isNaN(quantity) || isNaN(distance) ||  !transportType) {
         return alert("Please fill in all required fields.");
     }
 
@@ -51,9 +51,14 @@ function calculatePayment() {
     }
     
     // Step 2: Adjust for vehicle type
+    // let vehicleTypeAdjustment = 100;
+    // if (vehicleType.split('"').join('') === 'Truck') {
+    //     vehicleTypeAdjustment = 100;
+    // }
     let vehicleTypeAdjustment = 100;
-    if (vehicleType.split('"').join('') === 'Truck') {
-        vehicleTypeAdjustment = 100;
+    if (vehicleType.split('"').join('') === '') {
+        vehicleTypeAdjustment = 0;
+        console.log('vitore acie');
     }
 
     // Step 3: Adjust for transport type

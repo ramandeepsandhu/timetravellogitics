@@ -39,6 +39,45 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <!-- Title -->
     <title>Time Travelers Logistics</title>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+<script>
+  function sendEmail() {
+    var formData = new FormData(document.getElementById("contactForm"));
+
+    var emailBody = `
+      Name: ${formData.get("Name")}<br>
+      Email: ${formData.get("Email")}<br>
+      Phone: ${formData.get("Phone")}<br>
+      Subject: ${formData.get("Subject")}<br>
+      Message: ${formData.get("Message")}<br>
+    `;
+
+    Email.send({
+      Host: "smtp.elasticemail.com",
+      Username: "hasanali142228@gmail.com", // Replace with your verified email address
+      Password: "4FADB20778943E7C571AE0DC1A238291C83E", // Replace with your SMTP password
+      To: "hasanali142228@gmail.com",
+      From: formData.get("Email"), // Use the email from the form
+      Subject: "New Message From Time Travel Logistics",
+      Body: emailBody,
+    })
+    .then((message) => {
+      if (message === "OK") {
+        alert("Your message has been sent successfully.");
+        document.getElementById("contactForm").reset(); // Reset the form
+      } else {
+        alert("There was an error sending your message. Please try again later1.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("There was an error sending your message. Please try again later2.");
+    });
+  }
+</script>
+
+
   </head>
   <body>
     <!-- Start Preloader Area -->
@@ -284,7 +323,7 @@
           <h2>Have a question? Drop us a message!</h2>
         </div>
 
-        <form id="contactForm" onsubmit="sendEmail(); reset(); return false;">
+        <form id="contactForm" onsubmit="sendEmail(); return false">
           <div class="row">
             <div class="col-lg-6 col-sm-6">
               <div class="form-group">
@@ -376,10 +415,8 @@
             <div class="col-12">
               <button
                 type="submit"
-                name="subscribe"
                 id="mc-embedded-subscribe"
                 class="default-btn btn-two"
-                value="Subscribe"
               >
                 Submit
               </button>
@@ -459,16 +496,13 @@
 
               <ul class="import-link">
                 <li>
-                  <a href="services-style-one.html">Sea Freight</a>
+                  <a href="index.html">Home</a>
                 </li>
                 <li>
-                  <a href="services-style-one.html">Air Freight</a>
+                  <a href="contact-us.html">Contact Us</a>
                 </li>
                 <li>
-                  <a href="services-style-one.html">Road Freight</a>
-                </li>
-                <li>
-                  <a href="services-style-one.html">Local Delivery</a>
+                  <a href="services-style-three.html">Ship Now</a>
                 </li>
                 <li>
                   <a href="services-style-one.html">Bus Freight</a>
@@ -552,6 +586,10 @@
     </div>
     <!-- End Go Top Area -->
 
+
+  
+
+
     <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
     <!-- Bootstrap Bundle Min JS -->
@@ -583,45 +621,7 @@
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
     <!-- script for mailchimp  -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
 
-    <script>
-      function sendEmail() {
-        var formData = new FormData(document.getElementById("contactForm"));
-
-        var emailBody = `
-				Name: ${formData.get("Name")}<br>
-				Email: ${formData.get("Email")}<br>
-				Phone: ${formData.get("Phone")}<br>
-				Subject: ${formData.get("Subject")}<br>
-				Message: ${formData.get("Message")}<br>
-			  `;
-
-        Email.send({
-          Host: "smtp.elasticemail.com",
-          Username: "hasanali142228@gmail.com", // Replace with your verified email address
-          Password: "8353F0B8B20DAC76ADEE990C246BCD47E864", // Replace with your SMTP password
-          To: "hasanali142228@gmail.com",
-          From: formData.get("Email"), // Use the email from the form
-          Subject: "New Message From Time Travel Logistics",
-          Body: emailBody,
-        })
-          .then((message) => {
-            if (message === "OK") {
-              alert("Your message has been sent successfully.");
-            } else {
-              alert(
-                "There was an error sending your message. Please try again later."
-              );
-            }
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            alert(
-              "There was an error sending your message. Please try again later."
-            );
-          });
-      }
-    </script>
   </body>
 </html>

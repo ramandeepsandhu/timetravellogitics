@@ -27,6 +27,7 @@ function getPlaceLatLng(autocomplete, type) {
 }
 
 async function calculateDistance() {
+   
     try {
         if (window.originLatLng && window.destinationLatLng) {
             const service = new google.maps.DistanceMatrixService();
@@ -46,22 +47,25 @@ async function calculateDistance() {
                         let distance = document.getElementById('distance-result').innerText;
                         let calculateMiles = distance * 0.0006
                         let resultinMiles = calculateMiles.toFixed()
-                        localStorage.setItem('distanceResult', resultinMiles);
+                       
+                        if (resultinMiles) {
+                            localStorage.setItem('distanceResult', resultinMiles);
+                        } else {
+                            localStorage.setItem('distanceResult', '0');
+                        }
+
                     } else {
                         console.error('Distance Matrix request failed due to ' + status);
                     }
                 }
             );
-        } else {
-            throw new Error('Please select an option from the dropdown for both origin and destination.');
-            
-
-        }
+        } 
     } catch (error) {
         alert(error.message);
-        console.error(error);
+        console.error(error);    
     }
 }
 
 // Initialize the Autocomplete on window load
 window.onload = initAutocomplete;
+    

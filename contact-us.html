@@ -39,13 +39,12 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <!-- Title -->
     <title>Time Travelers Logistics</title>
-    <script src="https://smtpjs.com/v3/smtp.js">
-    </script>
-<script>
-  function sendEmail() {
-    var formData = new FormData(document.getElementById("contactForm"));
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail() {
+        var formData = new FormData(document.getElementById("contactForm"));
 
-    var emailBody = `
+        var emailBody = `
       Name: ${formData.get("Name")}<br>
       Email: ${formData.get("Email")}<br>
       Phone: ${formData.get("Phone")}<br>
@@ -53,31 +52,33 @@
       Message: ${formData.get("Message")}<br>
     `;
 
-    Email.send({
-      Host: "smtp.elasticemail.com",
-      Username: "hasanali142228@gmail.com", // Replace with your verified email address
-      Password: "4FADB20778943E7C571AE0DC1A238291C83E", // Replace with your SMTP password
-      To: "hasanali142228@gmail.com",
-      From: formData.get("Email"), // Use the email from the form
-      Subject: "New Message From Time Travel Logistics",
-      Body: emailBody,
-    })
-    .then((message) => {
-      if (message === "OK") {
-        alert("Your message has been sent successfully.");
-        document.getElementById("contactForm").reset(); // Reset the form
-      } else {
-        alert("There was an error sending your message. Please try again later1.");
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "David@timetravelerslogistics.com", // Replace with your verified email address
+          Password: "CE74BC561B9CBD9B722D6F5E372DB0670AC5", // Replace with your SMTP password
+          To: "David@TimeTravelersLogistics.com, AnaBoyd@TimeTravelersLogistics.com",
+          From: formData.get("Email"), // Use the email from the form
+          Subject: "New Message From Time Travel Logistics",
+          Body: emailBody,
+        })
+          .then((message) => {
+            if (message === "OK") {
+              alert("Your message has been sent successfully.");
+              document.getElementById("contactForm").reset(); // Reset the form
+            } else {
+              alert(
+                "There was an error sending your message. Please try again later1."
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert(
+              "There was an error sending your message. Please try again later2."
+            );
+          });
       }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("There was an error sending your message. Please try again later2.");
-    });
-  }
-</script>
-
-
+    </script>
   </head>
   <body>
     <!-- Start Preloader Area -->
@@ -270,7 +271,7 @@
               <i class="bx bx-envelope"></i>
               <h3>Email Us:</h3>
               <a
-                style="text-align: left"
+                style=""
                 href="mailto:AnaBoyd@TimeTravelersLogistics.com"
                 >AnaBoyd@TimeTravelersLogistics.com</a
               >
@@ -464,29 +465,6 @@
                 focusing on auction-to-dealer and dealer-to-auction vehicle
                 transport..
               </p>
-
-              <!-- <ul class="social-icon">
-				  <li>
-					<a href="https://www.facebook.com/" target="_blank">
-					  <i class="bx bxl-facebook"></i>
-					</a>
-				  </li>
-				  <li>
-					<a href="https://www.instagram.com/" target="_blank">
-					  <i class="bx bxl-instagram"></i>
-					</a>
-				  </li>
-				  <li>
-					<a href="https://www.linkedin.com/" target="_blank">
-					  <i class="bx bxl-linkedin-square"></i>
-					</a>
-				  </li>
-				  <li>
-					<a href="https://www.twitter.com/" target="_blank">
-					  <i class="bx bxl-twitter"></i>
-					</a>
-				  </li>
-				</ul> -->
             </div>
           </div>
 
@@ -496,19 +474,13 @@
 
               <ul class="import-link">
                 <li>
-                  <a href="index.html">Home</a>
+                  <a href="#">Car Transport</a>
                 </li>
                 <li>
-                  <a href="contact-us.html">Contact Us</a>
+                  <a href="#">Car Shipping</a>
                 </li>
                 <li>
-                  <a href="services-style-three.html">Ship Now</a>
-                </li>
-                <li>
-                  <a href="services-style-one.html">Bus Freight</a>
-                </li>
-                <li>
-                  <a href="services-style-one.html">Car Freight</a>
+                  <a href="multi-step-form.html">Book Now</a>
                 </li>
               </ul>
             </div>
@@ -521,6 +493,9 @@
               <ul class="import-link">
                 <li>
                   <a href="about-us.html">About Us</a>
+                </li>
+                <li>
+                  <a href="contact-us.html">Contact Us</a>
                 </li>
 
                 <li>
@@ -538,7 +513,7 @@
 
           <div class="col-lg-4 col-md-6 ml-30">
             <div class="single-footer-widget">
-              <h3>Address</h3>
+              <h3>Contact</h3>
 
               <ul class="address">
                 <li class="location">
@@ -565,7 +540,7 @@
     <!-- End Footer Area -->
 
     <!-- Start Copy Right Area -->
-    <div class="copy-right-area">
+    <!-- <div class="copy-right-area">
       <div class="container">
         <div class="row">
           <p class="">
@@ -576,7 +551,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- End Copy Right Area -->
 
     <!-- Start Go Top Area -->
@@ -585,10 +560,6 @@
       <i class="bx bx-chevrons-up"></i>
     </div>
     <!-- End Go Top Area -->
-
-
-  
-
 
     <!-- Jquery Min JS -->
     <script src="assets/js/jquery.min.js"></script>
@@ -621,7 +592,5 @@
     <!-- Custom JS -->
     <script src="assets/js/custom.js"></script>
     <!-- script for mailchimp  -->
-    
-
   </body>
 </html>

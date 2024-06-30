@@ -32,7 +32,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .section-title {
     margin-bottom: 30px;
-    text-align: center !important;
+    text-align: left !important;
     span {
       font-size: 14px;
     }
@@ -54,7 +54,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
       }
     }
     .header-right-content {
-      text-align: center;
+      text-align: left;
       margin-top: 10px;
     }
   }
@@ -114,7 +114,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .about-content {
     margin-left: 0;
-    text-align: center;
+    text-align: left;
     .top-title {
       margin-bottom: 10px;
       font-size: 14px;
@@ -153,7 +153,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     }
   }
   .choose-us-content {
-    text-align: center;
+    text-align: left;
     h2 {
       font-size: 25px;
       margin-bottom: 15px;
@@ -162,7 +162,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
       margin-bottom: 30px;
     }
     .single-choose-us-box {
-      text-align: center;
+      text-align: left;
       span {
         font-size: 15px;
       }
@@ -448,7 +448,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .showing-result-count {
     margin-bottom: 15px;
-    text-align: center;
+    text-align: left;
   }
   .cart-area {
     overflow: hidden;
@@ -468,7 +468,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
       table tbody tr td a {
         font-size: 14px;
       }
-      text-align: center;
+      text-align: left;
       table {
         thead {
           tr {
@@ -701,6 +701,9 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   .banner-area {
     padding-top: 235px;
   }
+  #shipping-options{
+    flex-direction: column;
+  }
   .shipment-content-card {
     width: 100% !important;
   }
@@ -716,6 +719,9 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     .services-content {
       bottom: -150px;
     }
+  }
+  #shipping-options{
+    flex-direction: column;
   }
   .testimonials-area {
     .container-fluid {
@@ -754,7 +760,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .section-title {
     margin-bottom: 30px;
-    text-align: center !important;
+    text-align: left !important;
     span {
       font-size: 14px;
     }
@@ -798,7 +804,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     }
   }
   .banner-content {
-    text-align: center;
+    text-align: left;
     margin: auto;
     h1 {
       font-size: 30px;
@@ -839,7 +845,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .about-content {
     margin-left: 0;
-    text-align: center;
+    text-align: left;
     .top-title {
       margin-bottom: 10px;
       font-size: 14px;
@@ -878,7 +884,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
     }
   }
   .choose-us-content {
-    text-align: center;
+    text-align: left;
     h2 {
       font-size: 25px;
       margin-bottom: 15px;
@@ -887,7 +893,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
       margin-bottom: 30px;
     }
     .single-choose-us-box {
-      text-align: center;
+      text-align: left;
       span {
         font-size: 15px;
       }
@@ -1199,7 +1205,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .choose-us-content {
     .single-choose-us-box {
-      text-align: center;
+      text-align: left;
       padding: 15px;
       span {
         font-size: 13px;
@@ -1219,7 +1225,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .about-img {
     background-image: url(../../assets/img/about-img.jpg);
-    background-position: center center;
+    background-position: left left;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
@@ -1257,7 +1263,7 @@ $box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
   }
   .choose-us-img {
     background-image: url(../../assets/img/choose-us-img.jpg);
-    background-position: center center;
+    background-position: left left;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;

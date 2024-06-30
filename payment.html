@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <!-- Owl Theme Default Min CSS -->
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+    <!-- Boxicons Min CSS -->
+    <link rel="stylesheet" href="assets/css/boxicons.min.css" />
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css" />
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="assets/css/flaticon.css" />
+    <!-- Meanmenu Min CSS -->
+    <link rel="stylesheet" href="assets/css/meanmenu.min.css" />
+    <!-- Nice Select Min CSS -->
+    <link rel="stylesheet" href="assets/css/nice-select.min.css" />
+    <!-- Odometer Min CSS-->
+    <link rel="stylesheet" href="assets/css/odometer.min.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Dark CSS -->
+    <link rel="stylesheet" href="assets/css/dark.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <!-- Title -->
+    <title>Time Travelers Logistics</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO7yvdB3mxt8EX1nB7QYxLktTs4tWOfXo&libraries=places"></script>
+  </head>
+<body>
+   <!-- start step 3 -->
+ 
+    <section class="container pt-100">
+     <div class="payment-container-title">
+        <div>
+            <h1 class="title">Here are your available shipping options:</h1>
+        <p class="description">
+           Prices are for Open transport unless you select Enclosed option below.
+        </p>
+        </div>
+     </div>
+
+      <div class="row">
+
+          <div class="col-md-7">
+              <div id="shipping-options"  class="">
+                  <div class="shipping-option col-md-4" data-price="0.00" data-name="Standard Rate">
+                      <h4>Standard Rate</h4>
+                      <p>Pick-up and drop-off within 7 business days</p>
+                      <div class="price">$0.00</div>
+                  </div>
+                  <div class="shipping-option col-md-4" data-price="200.00" data-name="Expedited Rate">
+                      <h4>Expedited Rate</h4>
+                      <p>Pick-up within 2 business days and drop-off within 2 business days. Additional $200.00 fee per vehicle applies.</p>
+                      <div class="price">$200.00</div>
+                      
+                  </div>
+                  <div class="shipping-option col-md-4" data-price="00.00" data-name="Expedited Rate">
+                      <h4>Exact Delivery Date</h4>
+                      <p>Please call for a quote</p>
+                      <a href="contact-us.html"><button class="default-btn">Contact</button></a>
+                      
+                  </div>
+              </div>  
+              <div class="checkbox-container">
+                  <input type="checkbox" id="enclosed-transport" data-price="500" />
+                  Enclosed transport
+              </div>
+             </div>
+      
+             
+             
+      
+              <div class="col-md-5">
+                   
+              <div class="total-container">
+                  <h6>Transport Fee: $ <span id="total-cost">0.00</span></h6>
+              </div>
+              <div class="total-container">
+                  <h6>Expedited Fee: $ <span id="expedate-cost">0.00</span></h6>
+              </div>
+              <div class="total-container">
+                  <h6>XL Vehicle Surcharge: $ <span id="vehicle-type">0.00</span></h6>
+              </div>
+      
+              <div class="total-container">
+                  <h4>Total Amount: $ <span id="total-payment">0.00</span></h4>
+              </div>  
+                    <div class="payment-button">
+                     
+                      <button class="default-btn">Debit/Credit Card</button>
+                    
+                        <button class="default-btn mt-30 ">Request a Invoice</button>  <span>(Dealers Only)</span>
+                     
+                      
+                    </div>
+              </div>
+             
+      </div>
+
+    </section>
+  
+
+  <script src="assets/js/paymentCalculate.js"></script>
+</body>
+</html>

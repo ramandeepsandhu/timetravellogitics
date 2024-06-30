@@ -944,7 +944,6 @@ Banner Area Style
   margin-right: auto;
   margin-top: 120px;
   .top-title {
-    color: $main-color;
     display: block;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -965,9 +964,10 @@ Banner Area Style
     .default-btn {
       &.active {
         margin-left: 30px;
-        background-color: transparent;
-        border: 1px solid $main-color;
-        color: $main-color;
+        background-color: $heading-color;
+        color: $white-color;
+        
+        
         &::before {
           opacity: 0;
         }
@@ -983,8 +983,8 @@ Banner Area Style
           }
         }
         &:hover {
-          background-color: $heading-color;
-          color: $white-color;
+          background-color: $main-color;
+          color: $heading-color;
           border-color: $heading-color;
           &::before {
             opacity: 1;
@@ -1128,7 +1128,6 @@ About Area Style
   margin-top: -5px;
   margin-bottom: 30px;
   .top-title {
-    color: $main-color;
     display: block;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -1258,7 +1257,6 @@ Choose Area Style
 .choose-us-content {
   margin-bottom: 30px;
   .top-title {
-    color: $main-color;
     display: block;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -1481,7 +1479,45 @@ Pricing Area Style
 Shipment Area Style
 ======================================================*/
 .shipment-area {
+  background-image: url(../../assets/img/shipment-bg1.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black-color;
+    opacity: 0.7;
+    z-index: -1;
+  }
+}
+.shipment-area1 {
   background-image: url(../../assets/img/shipment-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black-color;
+    opacity: 0.7;
+    z-index: -1;
+  }
+}
+.shipment-area2 {
+  background-image: url(../../assets/img/shipment-bg2.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1504,7 +1540,6 @@ Shipment Area Style
   // max-width: 700px;
   margin: auto;
   .top-title {
-    color: $main-color;
     display: block;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -1525,7 +1560,7 @@ Shipment Area Style
     color: #fff;
     text-align: center;
     h4 {
-      color: #24ff00;
+      color: $main-color;
       font-weight: bold;
     }
   }
@@ -3749,9 +3784,7 @@ Cart Area Style
     text-align: right;
   }
 }
-label {
-  margin-bottom: 12px;
-}
+
 
 /* 
 Checkout Area Style
@@ -5327,7 +5360,7 @@ Nice select Area Style*/
     text-align: left;
   }
   .option {
-    text-align: center;
+    text-align: left;
     
     &:hover {
       background-color: $main-color;
@@ -5525,6 +5558,9 @@ Tabs Area Style*/
 #multistepformContainer {
   background-color: #f5f5f5 !important;
 }
+#multistepformContainer #amount:focus {
+  outline: none;
+}
 #distance-result {
   color: $main-color;
 }
@@ -5545,13 +5581,85 @@ Tabs Area Style*/
 }
 .courses-title {
   padding: 20px 0;
-  background-color: $graywhite-color;
-  margin-bottom: 30px;
+  margin-bottom:15px;
   h3 {
     color: $black-color !important;
     text-align: center;
   }
+  p {
+    color: $black-color !important;
+    text-align: center;
+  }
+
 }
 .option-select{
   text-align: center !important;
+}
+.shipment-content .top-title{
+  color:$white-color;
+}
+.shipment-area2 .shipment-btnA:hover{
+color: $white-color !important;
+}
+.payment-container-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.payment-container{
+  padding:100px 100px;
+}
+#shipping-options{
+  display: flex;justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.shipping-option {
+  background-color: $main-color;
+  color: black;
+  border: 1px solid &$heading-color;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  vertical-align: top;
+  button{
+    background-color: $white-color;
+    color:$black-color;
+    margin-top: 20px;
+  }
+}
+.shipping-option.selected {
+  border: 1px solid $black-color;
+}
+.shipping-option h4 {
+  margin-top: 0;
+}
+.shipping-option p {
+  font-size: 12px;
+}
+.price {
+  font-size: 24px;
+  color: $black-color;
+}
+.checkbox-container {
+  margin: 20px;
+}
+.total-container {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.total-container{
+  text-align: right;
+}
+.payment-button{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 60px;
+  button{
+    width: 50%;
+  }
 }

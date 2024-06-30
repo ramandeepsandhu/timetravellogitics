@@ -905,7 +905,6 @@ Banner Area Style
   margin-top: 120px;
 }
 .banner-content .top-title {
-  color: #89f336;
   display: block;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -924,9 +923,8 @@ Banner Area Style
 }
 .banner-content .banner-btn .default-btn.active {
   margin-left: 30px;
-  background-color: transparent;
-  border: 1px solid #89f336;
-  color: #89f336;
+  background-color: #000024;
+  color: #ffffff;
 }
 .banner-content .banner-btn .default-btn.active::before {
   opacity: 0;
@@ -941,8 +939,8 @@ Banner Area Style
   opacity: 0;
 }
 .banner-content .banner-btn .default-btn.active:hover {
-  background-color: #000024;
-  color: #ffffff;
+  background-color: #89f336;
+  color: #000024;
   border-color: #000024;
 }
 .banner-content .banner-btn .default-btn.active:hover::before {
@@ -1073,7 +1071,6 @@ About Area Style
   margin-bottom: 30px;
 }
 .about-content .top-title {
-  color: #89f336;
   display: block;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -1197,7 +1194,6 @@ Choose Area Style
   margin-bottom: 30px;
 }
 .choose-us-content .top-title {
-  color: #89f336;
   display: block;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -1409,7 +1405,7 @@ Pricing Area Style
 Shipment Area Style
 ======================================================*/
 .shipment-area {
-  background-image: url(../../assets/img/shipment-bg.jpg);
+  background-image: url(../../assets/img/shipment-bg1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1428,12 +1424,51 @@ Shipment Area Style
   z-index: -1;
 }
 
+.shipment-area1 {
+  background-image: url(../../assets/img/shipment-bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+.shipment-area1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.shipment-area2 {
+  background-image: url(../../assets/img/shipment-bg2.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+.shipment-area2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  opacity: 0.7;
+  z-index: -1;
+}
+
 .shipment-content {
   text-align: center;
   margin: auto;
 }
 .shipment-content .top-title {
-  color: #89f336;
   display: block;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -1451,7 +1486,7 @@ Shipment Area Style
   text-align: center;
 }
 .shipment-content .shipment-content-card h4 {
-  color: #24ff00;
+  color: #89f336;
   font-weight: bold;
 }
 .shipment-content h2 {
@@ -3527,10 +3562,6 @@ Cart Area Style
   text-align: right;
 }
 
-label {
-  margin-bottom: 12px;
-}
-
 /* 
 Checkout Area Style
 =====================================================*/
@@ -5027,7 +5058,7 @@ Nice select Area Style*/
   text-align: left;
 }
 .nice-select .option {
-  text-align: center;
+  text-align: left;
 }
 .nice-select .option:hover {
   background-color: #89f336;
@@ -5224,6 +5255,10 @@ Tabs Area Style*/
   background-color: #f5f5f5 !important;
 }
 
+#multistepformContainer #amount:focus {
+  outline: none;
+}
+
 #distance-result {
   color: #89f336;
 }
@@ -5247,14 +5282,99 @@ Tabs Area Style*/
 
 .courses-title {
   padding: 20px 0;
-  background-color: #f1efe7;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .courses-title h3 {
+  color: #1e1e1e !important;
+  text-align: center;
+}
+.courses-title p {
   color: #1e1e1e !important;
   text-align: center;
 }
 
 .option-select {
   text-align: center !important;
+}
+
+.shipment-content .top-title {
+  color: #ffffff;
+}
+
+.shipment-area2 .shipment-btnA:hover {
+  color: #ffffff !important;
+}
+
+.payment-container-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment-container {
+  padding: 100px 100px;
+}
+
+#shipping-options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.shipping-option {
+  background-color: #89f336;
+  color: black;
+  border: 1px solid .shipping-option #000024;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  vertical-align: top;
+}
+.shipping-option button {
+  background-color: #ffffff;
+  color: #1e1e1e;
+  margin-top: 20px;
+}
+
+.shipping-option.selected {
+  border: 1px solid #1e1e1e;
+}
+
+.shipping-option h4 {
+  margin-top: 0;
+}
+
+.shipping-option p {
+  font-size: 12px;
+}
+
+.price {
+  font-size: 24px;
+  color: #1e1e1e;
+}
+
+.checkbox-container {
+  margin: 20px;
+}
+
+.total-container {
+  margin: 20px;
+  font-size: 18px;
+}
+
+.total-container {
+  text-align: right;
+}
+
+.payment-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 60px;
+}
+.payment-button button {
+  width: 50%;
 }/*# sourceMappingURL=style.css.map */

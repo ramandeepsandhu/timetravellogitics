@@ -54,26 +54,84 @@ function updateModelDropdown() {
 
 
 
-function gotoNext2Page() {
-    let name = document.getElementById('name').value;
-    let phone = document.getElementById('phone').value;
-    let email = document.getElementById('email').value;
+
+
+
+document.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Get the selected values from the form
     let origin = document.getElementById("state1").value;
     let destination = document.getElementById("state2").value;
-    let quantity = document.getElementById("quantity").value;
 
-    if (!destination || !origin || !quantity || !name || !phone || !email) {
-        return alert('Please fill up the required fields!');
+    console.log(origin);    
+    console.log(destination);
+
+    const distanceResult = document.getElementById("distance-result").innerText;
+
+    localStorage.setItem("distanceResult", distanceResult);
+    // Save the values to localStorage
+    localStorage.setItem("origin", origin);
+    localStorage.setItem("destination", destination);
+
+    gotoMultiStepForm(); // Assuming you want to redirect after form submission
+});
+
+async function gotoMultiStepForm() {
+    try {
+        console.log("Redirecting to multi-step form...");
+        window.location.href = "multi-step-form.html";
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    let origin = localStorage.getItem("origin");
+    let destination = localStorage.getItem("destination");
+    let distanceResult = localStorage.getItem("distanceResult");
+    console.log(origin);
+    console.log(destination);
+
+    if (origin) {
+        document.getElementById("state1").value = origin;
+        document.getElementById("address1").value = origin;
+    }
+    if (destination) {
+        document.getElementById("state2").value = destination;
+        document.getElementById("address2").value = destination;
+    }
+    if (distanceResult) {
+        document.getElementById("distance-result").innerText = distanceResult;
+        document.getElementById("distance").value = distanceResult;
+    }
+});
+
+function handleCheckout(event) {
+    event.preventDefault();
+
+    let iframe = document.getElementById("hidden_iframe");
+    if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = "hidden_iframe";
+        iframe.id = "hidden_iframe";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
     }
 
-    updateLocalStorage(); 
-    calculateTotal();
-    nextStep(2);
+    const form = document.getElementById("multiStepForm");
+    form.target = "hidden_iframe";
+
+    iframe.onload = function () {
+        window.location.href = "Checkout.html";
+    };
+
+    form.submit();
 }
 
 function updateLocalStorage() {
     let transportType = document.getElementById("transport-type").value;
-    let vehicleType = document.getElementById("vehicle-type").value; // Corrected ID here
+    let vehicleType = document.getElementById("vehicle-type").value;
     let quantity = document.getElementById("quantity").value;
 
     localStorage.setItem("transportType", transportType);
@@ -86,75 +144,9 @@ function updateLocalStorage() {
     localStorage.setItem("origin", origin);
     localStorage.setItem("destination", destination);
     localStorage.setItem("distanceResult", distanceResult);
-    calculateTotal();
+
     localStorage.removeItem("paymentAmount");
 }
-
-const shippingOptions = document.querySelectorAll(".shipping-option");
-const enclosedTransport = document.getElementById("enclosed-transport");
-const totalPayment = document.getElementById("total-payment");
-const totalCostElement = document.getElementById("total-cost");
-const ExpredetCostElement = document.getElementById("expedate-cost");
-const vehicleTypeElement = document.getElementById("vehicle-type");
-
-function calculateTotal() {
-    let totalDistance = parseFloat(localStorage.getItem("distanceResult"));
-    let totalQuantity = parseFloat(localStorage.getItem("quantity"));
-    let vehicleType = localStorage.getItem("vehicleType");
-
-    let baseRate = 0;
-    let vehicleTypeAdjustment = vehicleType ? 100 : 0;
-    let selectedShippingPrice = parseFloat(ExpredetCostElement.textContent) || 0;
-
-    if (totalDistance) {
-        if (totalDistance <= 300) {
-            baseRate = totalDistance * 1.75;
-        } else if (totalDistance <= 500) {
-            baseRate = totalDistance * 1.50;
-        } else if (totalDistance <= 999) {
-            baseRate = totalDistance * 1.25;
-        }
-        totalCostElement.textContent = baseRate.toFixed(2);
-    }
-
-    const transportTypeAdjustment = enclosedTransport.checked ? parseFloat(enclosedTransport.dataset.price) : 0;
-    const totalCost = baseRate + vehicleTypeAdjustment + transportTypeAdjustment;
-    const totalPaymentAmount = (totalCost + selectedShippingPrice) * totalQuantity;
-
-    if (totalPaymentAmount) {
-        totalPayment.textContent = totalPaymentAmount.toFixed(2);
-    } else {
-        totalPayment.textContent = "0.00";
-    }
-
-    console.log("Total Distance:", totalDistance);
-    console.log("Total Quantity:", totalQuantity);
-    console.log("Base Rate:", baseRate);
-    console.log("Vehicle Type Adjustment:", vehicleTypeAdjustment);
-    console.log("Transport Type Adjustment:", transportTypeAdjustment);
-    console.log("Selected Shipping Price:", selectedShippingPrice);
-    console.log("Total Cost:", totalCost);
-    console.log("Total Payment Amount:", totalPaymentAmount);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    calculateTotal();
-
-    shippingOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-            shippingOptions.forEach((opt) => opt.classList.remove("selected"));
-            option.classList.add("selected");
-            ExpredetCostElement.textContent = option.dataset.price;
-            updateLocalStorage();
-            calculateTotal();
-        });
-    });
-
-    enclosedTransport.addEventListener("change", () => {
-        updateLocalStorage();
-        calculateTotal();
-    });
-});
 
 function setDateinLocalStorage() {
     let pickupdate = document.getElementById("pickup-date").value;
@@ -178,8 +170,73 @@ function gotPaymentDetails() {
     window.location.href = 'payment.html';
 }
 
+function gotoNext2Page() {
+    let name = document.getElementById('name').value;
+    let phone = document.getElementById('phone').value;
+    let email = document.getElementById('email').value;
+    let origin = document.getElementById("state1").value;
+    let destination = document.getElementById("state2").value;
+    let quantity = document.getElementById("quantity").value;
 
+    if (!destination || !origin || !quantity || !name || !phone || !email) {
+        return alert('Please fill up the required fields!');
+    }
 
+    nextStep(2);
+}
 
+const shippingOptions = document.querySelectorAll(".shipping-option");
+const enclosedTransport = document.getElementById("enclosed-transport");
+const totalPayment = document.getElementById("total-payment");
+const totalCostElement = document.getElementById("total-cost");
+const ExpredetCostElement = document.getElementById("expedate-cost");
+const vehicleTypeElement = document.getElementById("vehicle-type");
 
+let totalDistance = parseFloat(localStorage.getItem("distanceResult"));
+let totalQuantity = parseFloat(localStorage.getItem("quantity"));
+const vehicleType = localStorage.getItem("vehicleType");
 
+vehicleTypeElement.textContent = vehicleType ? "100.00" : "0.00";
+
+let baseRate = 0;
+let vehicleTypeAdjustment = vehicleType ? 100 : 0;
+
+if (totalDistance) {
+    if (totalDistance <= 300) {
+        baseRate = totalDistance * 1.75;
+    } else if (totalDistance <= 500) {
+        baseRate = totalDistance * 1.50;
+    } else if (totalDistance <= 999) {
+        baseRate = totalDistance * 1.25;
+    }
+
+    totalCostElement.textContent = baseRate.toFixed(2);
+}
+
+let selectedShippingPrice = 0;
+
+shippingOptions.forEach((option) => {
+    option.addEventListener("click", () => {
+        shippingOptions.forEach((opt) => opt.classList.remove("selected"));
+        option.classList.add("selected");
+        selectedShippingPrice = parseFloat(option.dataset.price);
+        ExpredetCostElement.textContent = selectedShippingPrice.toFixed(2);
+        calculateTotal();
+    });
+});
+
+enclosedTransport.addEventListener("change", calculateTotal);
+
+function calculateTotal() {
+    totalDistance = parseFloat(localStorage.getItem("distanceResult"));
+    totalQuantity = parseFloat(localStorage.getItem("quantity"));
+    const transportTypeAdjustment = enclosedTransport.checked ? parseFloat(enclosedTransport.dataset.price) : 0;
+    const totalCost = baseRate + vehicleTypeAdjustment + transportTypeAdjustment;
+    const totalPaymentAmount = (totalCost + selectedShippingPrice) * totalQuantity;
+
+    if (totalPaymentAmount) {
+        totalPayment.textContent = totalPaymentAmount.toFixed(2);
+    } 
+}
+
+calculateTotal();

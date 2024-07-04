@@ -33,9 +33,27 @@ const models = {
     volvo: ['S60', 'S90', "V60", 'XC40', 'XC60', "XC90"]
 }
 
-function updateModelDropdown() {
-    const makeDropdown = document.getElementById('makeDropdown');
-    const modelDropdown = document.getElementById('modelDropdown');
+const xl = { 
+   "chevrolet" : ["suburban", "tahoe", "silverado-1500", "silverado-2500HD", "silverado-3500HD", "colorado", "express"],
+   "gmc" : ["yukon-xl", "yukon", "sierra-1500", "sierra-2500HD", "sierra-3500HD", "canyon", "savana"],
+   "ford" : ["expedition-max", "expedition", "f-150", "f-250-super-duty", "f-350-super-duty", "f-450-super-duty", "ranger", "maverick", "transit", "transit-connect"],
+   "ram" : ["1500", "2500", "3500", "promaster", "promaster-city"],
+   "cadillac" : ["escalade-esv", "escalade"],
+   "lincoln" : ["navigator-l", "navigator"],
+   "toyota" : ["sequoia", "land-cruiser", "tundra", "tacoma"],
+   "nissan" : ["armada", "titan", "titan-xd", "frontier", "nv-cargo", "nv-passenger"],
+   "infiniti" : ["qx80"],
+   "mercedes-benz" : ["gls-class", "sprinter", "metris"],
+   "lexus" : ["lx"],
+   "land-rover" : ["range-rover"],
+   "honda" : ["ridgeline"],
+   "jeep" : ["gladiator"]
+}
+
+function updateModelDropdown(obj) {
+    var index = jQuery(obj).attr('data-index');
+    const makeDropdown = document.getElementById('makeDropdown_'+index);
+    const modelDropdown = document.getElementById('modelDropdown_'+index);
     const selectedMake = makeDropdown.value;
 
     // Clear previous options
@@ -52,27 +70,18 @@ function updateModelDropdown() {
     }
 }
 
-
-
-
-
-
 document.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
 
     // Get the selected values from the form
     let origin = document.getElementById("state1").value;
     let destination = document.getElementById("state2").value;
-
-    console.log(origin);    
-    console.log(destination);
-
     const distanceResult = document.getElementById("distance-result").innerText;
-
-    localStorage.setItem("distanceResult", distanceResult);
+    
     // Save the values to localStorage
     localStorage.setItem("origin", origin);
     localStorage.setItem("destination", destination);
+    localStorage.setItem("distanceResult", distanceResult);
 
     gotoMultiStepForm(); // Assuming you want to redirect after form submission
 });
@@ -90,20 +99,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let origin = localStorage.getItem("origin");
     let destination = localStorage.getItem("destination");
     let distanceResult = localStorage.getItem("distanceResult");
+    
+    console.log("OnLoad");
     console.log(origin);
     console.log(destination);
 
     if (origin) {
         document.getElementById("state1").value = origin;
-        document.getElementById("address1").value = origin;
+        //document.getElementById("address1").value = origin;
     }
+
     if (destination) {
         document.getElementById("state2").value = destination;
-        document.getElementById("address2").value = destination;
+        //document.getElementById("address2").value = destination;
     }
     if (distanceResult) {
         document.getElementById("distance-result").innerText = distanceResult;
-        document.getElementById("distance").value = distanceResult;
+        //document.getElementById("distance").value = distanceResult;
     }
 });
 
@@ -131,16 +143,13 @@ function handleCheckout(event) {
 
 function updateLocalStorage() {
     let transportType = document.getElementById("transport-type").value;
-    let vehicleType = document.getElementById("vehicle-type").value;
     let quantity = document.getElementById("quantity").value;
-
-    localStorage.setItem("transportType", transportType);
-    localStorage.setItem("vehicleType", vehicleType);
-    localStorage.setItem("quantity", quantity);
-
     let origin = document.getElementById("state1").value;
     let destination = document.getElementById("state2").value;
     let distanceResult = document.getElementById("distance-result").innerText;
+
+    localStorage.setItem("transportType", transportType);
+    localStorage.setItem("quantity", quantity);
     localStorage.setItem("origin", origin);
     localStorage.setItem("destination", destination);
     localStorage.setItem("distanceResult", distanceResult);
@@ -181,62 +190,124 @@ function gotoNext2Page() {
     if (!destination || !origin || !quantity || !name || !phone || !email) {
         return alert('Please fill up the required fields!');
     }
-
+    calculateDistance();
+    calculateTotal();
     nextStep(2);
 }
+
+function gotoNext3Page(){
+    var validated = true;
+    jQuery("#step2").find('.required').removeClass('error-required');
+    
+    jQuery( "#step2 .required" ).each(function( index, element ) {
+        if( jQuery(element).val() == ''){
+            jQuery(element).addClass('error-required');
+            validated = false;
+        }
+    });
+    
+    if(validated)
+        nextStep(3);    
+}
+
 
 const shippingOptions = document.querySelectorAll(".shipping-option");
 const enclosedTransport = document.getElementById("enclosed-transport");
 const totalPayment = document.getElementById("total-payment");
 const totalCostElement = document.getElementById("total-cost");
 const ExpredetCostElement = document.getElementById("expedate-cost");
-const vehicleTypeElement = document.getElementById("vehicle-type");
 
 let totalDistance = parseFloat(localStorage.getItem("distanceResult"));
-let totalQuantity = parseFloat(localStorage.getItem("quantity"));
-const vehicleType = localStorage.getItem("vehicleType");
 
-vehicleTypeElement.textContent = vehicleType ? "100.00" : "0.00";
-
-let baseRate = 0;
-let vehicleTypeAdjustment = vehicleType ? 100 : 0;
-
-if (totalDistance) {
-    if (totalDistance <= 300) {
-        baseRate = totalDistance * 1.75;
-    } else if (totalDistance <= 500) {
-        baseRate = totalDistance * 1.50;
-    } else if (totalDistance <= 999) {
-        baseRate = totalDistance * 1.25;
-    }
-
-    totalCostElement.textContent = baseRate.toFixed(2);
-}
-
-let selectedShippingPrice = 0;
-
-shippingOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-        shippingOptions.forEach((opt) => opt.classList.remove("selected"));
-        option.classList.add("selected");
-        selectedShippingPrice = parseFloat(option.dataset.price);
-        ExpredetCostElement.textContent = selectedShippingPrice.toFixed(2);
-        calculateTotal();
+document.addEventListener("DOMContentLoaded", () => {
+    shippingOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            shippingOptions.forEach((opt) => opt.classList.remove("selected"));
+            option.classList.add("selected");
+            ExpredetCostElement.textContent = option.dataset.price;
+            updateLocalStorage();
+            calculateTotal();
+        });
     });
+    if(enclosedTransport != null){
+        enclosedTransport.addEventListener("change", () => {
+            updateLocalStorage();
+            calculateTotal();
+        });
+    }
 });
 
-enclosedTransport.addEventListener("change", calculateTotal);
+
+const transportTypeElement = document.getElementById("transport-type-cost");
+const vehicleQtyElement = document.getElementById("vehicle-qty");
+const vehicleTypeCostElement = document.getElementById("vehicle-type-cost");
+
+const quoteContainer = document.getElementById("quote-container");
+const noQuoteContainer = document.getElementById("no-quote-container");
+const costPerVehicleElement =  document.getElementById("cost-per-vehicle");
 
 function calculateTotal() {
-    totalDistance = parseFloat(localStorage.getItem("distanceResult"));
-    totalQuantity = parseFloat(localStorage.getItem("quantity"));
+    var totalQuantity = jQuery("#quantity").val();
+    let baseRate = 0;
+    let vehicleTypeAdjustment = 0;
+    let selectedShippingPrice = parseFloat(ExpredetCostElement.textContent) || 0;
+
+    jQuery( "#main-container .clone-div" ).each(function( index, vehicleObj ) {
+        vehicleMake     =  jQuery('#makeDropdown_' + index).val();
+        vehicleModel    =  jQuery('#modelDropdown_' + index).val();
+
+        if( typeof xl[vehicleMake] !== 'undefined' ){
+            if(xl[vehicleMake].includes(vehicleModel)){
+                 vehicleTypeAdjustment +=  100;
+            }
+        }
+    });
+
+    localStorage.setItem("vehicleTypeAdjustment", vehicleTypeAdjustment);
+
+    if (totalDistance) {
+        if (totalDistance <= 300) {
+            baseRate = totalDistance * 1.75;
+        } else if (totalDistance <= 500) {
+            baseRate = totalDistance * 1.50;
+        } else if (totalDistance <= 999) {
+            baseRate = totalDistance * 1.25;
+        }
+        totalCostElement.textContent = baseRate.toFixed(2);
+    }
+
     const transportTypeAdjustment = enclosedTransport.checked ? parseFloat(enclosedTransport.dataset.price) : 0;
-    const totalCost = baseRate + vehicleTypeAdjustment + transportTypeAdjustment;
-    const totalPaymentAmount = (totalCost + selectedShippingPrice) * totalQuantity;
+    const totalCost = baseRate  + transportTypeAdjustment;
+    const totalPaymentAmount = ( (totalCost + selectedShippingPrice) * totalQuantity) + vehicleTypeAdjustment;
 
     if (totalPaymentAmount) {
         totalPayment.textContent = totalPaymentAmount.toFixed(2);
-    } 
-}
+    } else {
+        totalPayment.textContent = "0.00";
+    }
 
-calculateTotal();
+    transportTypeElement.textContent = transportTypeAdjustment.toFixed(2);
+    vehicleQtyElement.textContent = totalQuantity;
+    vehicleTypeCostElement.textContent = vehicleTypeAdjustment.toFixed(2);
+
+    if(baseRate > 0){
+        quoteContainer.style.display = "block";
+        noQuoteContainer.style.display = "none";
+    }else{
+        quoteContainer.style.display = "none";
+        noQuoteContainer.style.display = "block";
+    }
+
+    if(totalQuantity > 0){
+        costPerVehicleElement.textContent = (totalPaymentAmount/totalQuantity).toFixed(2);
+    }
+
+    console.log("Total Distance:", totalDistance);
+    console.log("Total Quantity:", totalQuantity);
+    console.log("Base Rate:", baseRate);
+    console.log("Vehicle Type Adjustment:", vehicleTypeAdjustment);
+    console.log("Transport Type Adjustment:", transportTypeAdjustment);
+    console.log("Selected Shipping Price:", selectedShippingPrice);
+    console.log("Total Cost:", totalCost);
+    console.log("Total Payment Amount:", totalPaymentAmount);
+}

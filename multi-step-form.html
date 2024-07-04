@@ -186,52 +186,30 @@
                   
                 </div>
               </div>
+              
               <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
                   <select
-                    id="vehicleYear"
+                    name="MMERGE22"
+                    id="transport-type"
                     class="form-control"
-                    name="MMERGE6"
-                    placeholder="Vehicle Year"
-                  > 
-                  <option value="2024">2024</option>
-                  <option value="2023">2023</option>
-                  <option value="2022">2022</option>
-                  <option value="2021">2021</option>
-                  <option value="2020">2020</option>
-                  <option value="2019">2019</option>
-                  <option value="2018">2018</option>
-                  <option value="2017">2017</option>
-                  <option value="2016">2016</option>
-                  <option value="2015">2015</option>
-                  <option value="2014">2014</option>
-                  <option value="2013">2013</option>
-                  <option value="2012">2012</option>
-                  <option value="2011">2011</option>
-                  <option value="2010">2010</option>
-                  <option value="2009">2009</option>
-                  <option value="2008">2008</option>
-                  <option value="2007">2007</option>
-                  <option value="2006">2006</option>
-                  <option value="2005">2005</option>
-                  <option value="2004">2004</option>
-                  <option value="2003">2003</option>
-                  <option value="2002">2002</option>
-                  <option value="2001">2001</option>
-                  <option value="2000">2000</option>
-                  <option value="1999">1999</option>
-                  <option value="1998">1998</option>
-                  <option value="1997">1997</option>
-                  <option value="1996">1996</option>
-                  <option value="1995">1995</option>
-                  <option value="1994">1994</option>  
-                  <select>
+                    required
+                  >
+                    <option disabled selected>
+                      Transport type*
+                    </option>
+                    <option value="open">Open</option>
+                    <option value="enclosed">Enclosed</option>
+                  </select>
                 </div>
               </div>
 
+          <div id="main-container">
+            <div class="row container-item">
+
               <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
-                  <select onchange="updateModelDropdown()" name="MMERGE5" id="makeDropdown" class="form-control">
+                  <select onchange="updateModelDropdown(this)" name="Vehicle[0][Make]" id="makeDropdown_0" class="form-control" data-index="0">
                     <option value="">--Select Make--</option>
         <option value="acura">Acura</option>
         <option value="audi">Audi</option>
@@ -272,7 +250,7 @@
 
               <div class="col-lg-3 col-sm-6">
                <div class="form-group">
-                <select id="modelDropdown" class="form-control">
+                <select id="modelDropdown_0" name="Vehicle[0][Model]" class="form-control" data-index="0">
                   <option value="">--Select Model--</option>
               </select>
                </div>
@@ -282,87 +260,59 @@
 
               <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
-                  <select name="MMERGE7" id="vehicle-Type" class="form-control">
+
+                  <select name="Vehicle[0][Type]" id="vehicle-Type_0" class="form-control" data-index="0">
                     <option selected  value="">Vehicle Type</option>
-                    
-                    <!-- SUVs -->
-  <option value="Chevrolet Suburban">Chevrolet Suburban</option>
-  <option value="Chevrolet Tahoe">Chevrolet Tahoe</option>
-  <option value="GMC Yukon XL">GMC Yukon XL</option>
-  <option value="GMC Yukon">GMC Yukon</option>
-  <option value="Ford Expedition Max">Ford Expedition Max</option>
-  <option value="Ford Expedition">Ford Expedition</option>
-  <option value="Cadillac Escalade ESV">Cadillac Escalade ESV</option>
-  <option value="Cadillac Escalade">Cadillac Escalade</option>
-  <option value="Lincoln Navigator L">Lincoln Navigator L</option>
-  <option value="Lincoln Navigator">Lincoln Navigator</option>
-  <option value="Toyota Sequoia">Toyota Sequoia</option>
-  <option value="Toyota Land Cruiser">Toyota Land Cruiser</option>
-  <option value="Nissan Armada">Nissan Armada</option>
-  <option value="Infiniti QX80">Infiniti QX80</option>
-  <option value="Mercedes-Benz GLS-Class">Mercedes-Benz GLS-Class</option>
-  <option value="Lexus LX">Lexus LX</option>
-  <option value="Land Rover Range Rover">Land Rover Range Rover</option>
-  
-  <!-- Pickup Trucks -->
-  <option value="Chevrolet Silverado 1500">Chevrolet Silverado 1500</option>
-  <option value="Chevrolet Silverado 2500HD">Chevrolet Silverado 2500HD</option>
-  <option value="Chevrolet Silverado 3500HD">Chevrolet Silverado 3500HD</option>
-  <option value="Chevrolet Colorado">Chevrolet Colorado</option>
-  <option value="GMC Sierra 1500">GMC Sierra 1500</option>
-  <option value="GMC Sierra 2500HD">GMC Sierra 2500HD</option>
-  <option value="GMC Sierra 3500HD">GMC Sierra 3500HD</option>
-  <option value="GMC Canyon">GMC Canyon</option>
-  <option value="Ford F-150">Ford F-150</option>
-  <option value="Ford F-250 Super Duty">Ford F-250 Super Duty</option>
-  <option value="Ford F-350 Super Duty">Ford F-350 Super Duty</option>
-  <option value="Ford F-450 Super Duty">Ford F-450 Super Duty</option>
-  <option value="Ford Ranger">Ford Ranger</option>
-  <option value="Ford Maverick">Ford Maverick</option>
-  <option value="Ram 1500">Ram 1500</option>
-  <option value="Ram 2500">Ram 2500</option>
-  <option value="Ram 3500">Ram 3500</option>
-  <option value="Toyota Tundra">Toyota Tundra</option>
-  <option value="Toyota Tacoma">Toyota Tacoma</option>
-  <option value="Nissan Titan">Nissan Titan</option>
-  <option value="Nissan Titan XD">Nissan Titan XD</option>
-  <option value="Nissan Frontier">Nissan Frontier</option>
-  <option value="Honda Ridgeline">Honda Ridgeline</option>
-  <option value="Jeep Gladiator">Jeep Gladiator</option>
-  
-  <!-- XL Vans -->
-  <option value="Ford Transit">Ford Transit</option>
-  <option value="Ford Transit Connect">Ford Transit Connect</option>
-  <option value="Mercedes-Benz Sprinter">Mercedes-Benz Sprinter</option>
-  <option value="Mercedes-Benz Metris">Mercedes-Benz Metris</option>
-  <option value="Ram ProMaster">Ram ProMaster</option>
-  <option value="Ram ProMaster City">Ram ProMaster City</option>
-  <option value="Nissan NV Cargo">Nissan NV Cargo</option>
-  <option value="Nissan NV Passenger">Nissan NV Passenger</option>
-  <option value="Chevrolet Express">Chevrolet Express</option>
-  <option value="GMC Savana">GMC Savana</option>
+                    <option value="Car">Car</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Pickup">Pickup</option>
+                    <option value="Van">Van</option>
+                    <option value="Other">Other</option>
                   </select>
-                  
+
                 </div>
               </div>
               
-             
-              <div class="col-lg-3 col-sm-6">
+             <div class="col-lg-3 col-sm-6">
                 <div class="form-group">
-                  <select
-                    name="MMERGE22"
-                    id="transport-type"
-                    class="form-control"
-                    required
-                  >
-                    <option disabled selected>
-                      Transport type*
-                    </option>
-                    <option value="open">Open</option>
-                    <option value="enclosed">Enclosed</option>
-                  </select>
+                  <select id="vehicleYear_0" class="form-control" name="Vehicle[0][Year]" placeholder="Vehicle Year"> 
+                  <option value="2024">2024</option>
+                  <option value="2023">2023</option>
+                  <option value="2022">2022</option>
+                  <option value="2021">2021</option>
+                  <option value="2020">2020</option>
+                  <option value="2019">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                  <option value="1999">1999</option>
+                  <option value="1998">1998</option>
+                  <option value="1997">1997</option>
+                  <option value="1996">1996</option>
+                  <option value="1995">1995</option>
+                  <option value="1994">1994</option>  
+                  <select>
                 </div>
               </div>
+
+              </div>
+            </div>
 
               <div><h4 class="mt-30">Personal Information*</h4></div>
               <div class="col-lg-4 col-sm-6">
@@ -406,10 +356,11 @@
             <button
               class="default-btn btn-two"
               type="button"
-              onclick=" calculateDistance();  updateLocalStorage(); calculateTotal(); gotoNext2Page() "
+              onclick="gotoNext2Page();"
             >
               Next
             </button>
+<!-- updateLocalStorage(); calculateTotal(); -->
 
             <p class="hidden" id="distance-result"></p>
           </div>
@@ -425,16 +376,17 @@
                   <input
                     type="text"
                     id="name"
-                    class="form-control"
+                    class="form-control required"
                     name="MMERGE8"
                     placeholder="Your Name*"
+                    required
                   />
                 </div>
                 <div class="form-group col-md-6">
                   <input
                     type="email"
                     id="email"
-                    class="form-control"
+                    class="form-control required"
                     name="MMERGE10"
                     placeholder="Your Email*"
                   />
@@ -443,7 +395,7 @@
                   <input
                     type="text"
                     id="name"
-                    class="form-control"
+                    class="form-control required"
                     name="MMERGE9"
                     placeholder="Phone*"
                   />
@@ -497,7 +449,7 @@
                       maxlength="20"
                       name="MMERGE11[state]"
                       id=""
-                      class="form-control"
+                      class="form-control required"
                       value=""
                       placeholder="State*"
                     />
@@ -570,7 +522,7 @@
                     type="text"
                     maxlength="70"
                     name="MMERGE16[addr2]"
-                    class="form-control"
+                    class="form-control required"
                     value=""
                     placeholder="Adress line 2*"
                   />
@@ -582,14 +534,14 @@
                       maxlength="40"
                       name="MMERGE16[city]"
                       id="mce-MMERGE11-city"
-                      class="form-control"
+                      class="form-control required"
                       value=""
                       placeholder="City*"
                     />
                   </div>
                   <div class="form-group col-md-4">
                     <input
-                      type="text" maxlength="20" name="MMERGE16[state]"id=""   class="form-control"
+                      type="text" maxlength="20" name="MMERGE16[state]"id=""   class="form-control required"
                       value=""
                       placeholder="State*"
                     />
@@ -600,7 +552,7 @@
                       maxlength="10"
                       name="MMERGE16[zip]"
                       id="mce-MMERGE11-zip"
-                      class="form-control"
+                      class="form-control required"
                       value=""
                       placeholder="ZipCode*"
                     />
@@ -619,7 +571,7 @@
             <button
               class="default-btn btn-two"
               type="button"
-              onclick="calculateTotal(); nextStep(3)"
+              onclick="gotoNext3Page();"
             >
               Next
             </button> 
@@ -650,7 +602,7 @@
                              <div class="price">$200.00</div>
                              
                          </div>
-                         <div class="shipping-option col-md-4" data-price="00.00" data-name="Expedited Rate">
+                         <div class="shipping-option col-md-4" data-price="0.00" data-name="Expedited Rate">
                              <h5>Exact Delivery Date</h5>
                              <p>Please call for a quote</p>
                              <a href="contact-us.html"><button class="default-btn">Contact</button></a>
@@ -662,32 +614,45 @@
                          Enclosed transport
                      </div>
                     </div>
-             
-                    
-                    
-             
+
                      <div class="col-md-4">
-                          
-                     <div class="total-container">
-                         <h6>Transport Fee: $ <span id="total-cost">0.00</span></h6>
-                     </div>
-                     <div class="total-container">
-                         <h6>Expedited Fee: $ <span id="expedate-cost">0.00</span></h6>
-                     </div>
-                     <div class="total-container">
-                         <h6>XL Vehicle Surcharge: $ <span id="vehicle-type">0.00</span></h6>
-                     </div>
-             
-                     <div class="total-container">
-                         <h4>Total Amount: $ <span id="total-payment">0.00</span></h4>
-                     </div>  
-                           <div class="payment-button">
-                            
-                             <button class="default-btn">Debit/Credit Card</button>
-                           
-                               <button class="default-btn mt-30 ">Request a Invoice</button>  <span>(Dealers Only)</span>
+                           <div style="display:none;" id="quote-container">
+                             <div class="total-container">
+                                 <h6>Base Transport: $ <span id="total-cost">0.00</span></h6>
+                             </div>
+                             <div class="total-container">
+                                 <h6>Vehicle Qty: <span id="vehicle-qty">0</span></h6>
+                             </div>
+                             <div class="total-container">
+                                 <h6>Shipping Fee: $ <span id="expedate-cost">0.00</span></h6>
+                             </div>
+                             <div class="total-container">
+                                 <h6>Transport Type: $ <span id="transport-type-cost">0.00</span></h6>
+                             </div>
+                             <div class="total-container">
+                                 <h6>XL Vehicle Surcharge: $ <span id="vehicle-type-cost">0.00</span></h6>
+                             </div>
+                     
+                             <div class="total-container">
+                                 <h4>Total Amount: $ <span id="total-payment">0.00</span></h4>
+                             </div>  
+
+                             <div class="total-container">
+                                 <small>Your door-to-door shipping cost per vehicle: $ <span id="cost-per-vehicle">0.00</span></small>
+                             </div>
                               
-                           </div>
+                             <div class="payment-button">
+                              
+                               <button class="default-btn">Debit/Credit Card</button>
+                             
+                                 <button class="default-btn mt-30 ">Request a Invoice</button>  <span>(Dealers Only)</span>
+                                
+                             </div>
+                         </div>
+
+                           <div style="display:none;" id="no-quote-container">
+                              For distances of 1,000 miles or more, please call or send us a message for a best rate quote
+                            </div>
                      </div>
                     
              </div>
@@ -863,18 +828,38 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
     
+    <script src="assets/js/cloneData.js"></script>
     
-   
-   
 
     <script>
+       $('#quantity').cloneData({
+            mainContainerId: 'main-container', // Main container Should be ID
+            cloneContainer: 'container-item', // Which you want to clone
+            removeButtonClass: 'remove-item', // Remove button for remove cloned HTML
+            removeConfirm: true, // default true confirm before delete clone item
+            removeConfirmMessage: 'Are you sure want to delete?', // confirm delete message
+            //append: '<a href="javascript:void(0)" class="remove-item btn btn-sm btn-danger remove-social-media">Remove</a>', // Set extra HTML append to clone HTML
+            minLimit: 1, // Default 1 set minimum clone HTML required
+            maxLimit: 20, // Default unlimited or set maximum limit of clone HTML
+            defaultRender: 1,
+            init: function () {
+                console.info(':: Initialize Plugin ::');
+            },
+            beforeRender: function () {
+                console.info(':: Before rendered callback called');
+            },
+            afterRender: function () {
+                console.info(':: After rendered callback called');
+                //$(".selectpicker").selectpicker('refresh');
+            },
+            afterRemove: function () {
+                console.warn(':: After remove callback called');
+            },
+            beforeRemove: function () {
+                console.warn(':: Before remove callback called');
+            }
 
+        });
     </script>
-  
-
-
-
-
-
   </body>
 </html>

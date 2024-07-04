@@ -5369,6 +5369,14 @@ Tabs Area Style*/
   text-align: right;
 }
 
+.total-container small{
+  font-size: 12px;
+}
+
+.error-required{
+  border:red solid 1px;
+}
+
 .payment-button {
   display: flex;
   flex-direction: column;

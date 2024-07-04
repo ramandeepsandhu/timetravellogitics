@@ -17,8 +17,10 @@ function getPlaceLatLng(autocomplete, type) {
         const location = place.geometry.location;
         if (type === 'origin') {
             window.originLatLng = location;
+            localStorage.setItem('originLatLng', JSON.stringify(location));
         } else if (type === 'destination') {
             window.destinationLatLng = location;
+            localStorage.setItem('destinationLatLng', JSON.stringify(location));
         }
     } else {
         alert('Place or geometry not found');
@@ -27,26 +29,26 @@ function getPlaceLatLng(autocomplete, type) {
 }
 
 async function calculateDistance() {
-   
+    var originLatLng = JSON.parse(localStorage.getItem('originLatLng'));
+    var destinationLatLng = JSON.parse(localStorage.getItem('destinationLatLng'));
     try {
-        if (window.originLatLng && window.destinationLatLng) {
+        if (originLatLng && destinationLatLng) {
             const service = new google.maps.DistanceMatrixService();
             service.getDistanceMatrix(
                 {
-                    origins: [window.originLatLng],
-                    destinations: [window.destinationLatLng],
+                    origins: [originLatLng],
+                    destinations: [destinationLatLng],
                     travelMode: 'DRIVING',
                 },
                 (response, status) => {
                     if (status === 'OK') {
+
                         const distanceValue = response.rows[0].elements[0].distance.value;
                         const distanceMeters = distanceValue; // Distance in meters
-                        console.log(distanceMeters);
-                        document.getElementById('distance-result').innerText = ` ${distanceMeters}`;
-
-                        let distance = document.getElementById('distance-result').innerText;
-                        let calculateMiles = distance * 0.0006
+                        //let distance = document.getElementById('distance-result').innerText;
+                        let calculateMiles = distanceMeters * 0.0006
                         let resultinMiles = calculateMiles.toFixed()
+                        document.getElementById('distance-result').innerText = `${resultinMiles}`;
                        
                         if (resultinMiles) {
                             localStorage.setItem('distanceResult', resultinMiles);
